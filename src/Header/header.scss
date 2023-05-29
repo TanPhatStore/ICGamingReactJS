@@ -1,4 +1,16 @@
 
+.link {
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+}   
+
+.link:hover {
+    color: red;
+}
+
 .header {
     background-color: white;
     color : black;

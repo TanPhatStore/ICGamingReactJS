@@ -2,13 +2,25 @@ import { Context } from "./Context";
 
 function Provider({children}) {
 
-    let value = {
-        cateIndex1 : 1,
-        cateIndex2 : 1  
+    let handle = {
+        handleScrollDown : () => {
+            window.scrollTo(
+                0,  document.documentElement.scrollHeight)
+        },
+        handleScrollUp : () => {
+            window.scrollTo({top: 0, behavior : 'smooth'})
+        },
+    }
+
+    let data = {
+        listGames : ['GTA', 'Far Cry', 'Naruto Shippudent', 'Dragon Ball', 'Plant vs Zombies'],
+        listGamesPC : ['GTA', 'Far Cry', 'Naruto Shippudent', 'Dragon Ball'],
+        listGamesMobile : ['Dragon Ball', 'Plant vs Zombies']
+        
     }
 
     return ( 
-        <Context.Provider value={value}>
+        <Context.Provider value={[handle, data]}>
             {children}
         </Context.Provider>
      );

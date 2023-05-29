@@ -1,7 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 .boxParent {
-    height: 70px;
+    height: 60px;
     width: 100%;
     background-color: #f3f3f3;
+}
+
+.boxChildren {
+    height: 30px;
+    width: 100%;
+    background-color: #f3f3f3;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
 }

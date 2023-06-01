@@ -2,7 +2,7 @@
 
 import './gamesRandom.scss'
 import Game from '../../ElementCustom/Game'
-import {useEffect, useRef} from 'react'
+import {useEffect, useRef, useState} from 'react'
 
 function GamesRandom() {
 
@@ -23,42 +23,28 @@ function GamesRandom() {
         return shuffledArray;
     }
 
-    const GamesRandom = [
-        {
-            image : "https://imgix.bustle.com/uploads/image/2021/11/30/5841de61-d963-419b-b466-22233037ff4e-03-2.jpg?w=400&h=400&fit=crop&crop=faces&auto=format%2Ccompress",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        },
-        {
-            image : "https://is5-ssl.mzstatic.com/image/thumb/Video/v4/f5/54/ea/f554eae8-f7c7-2acf-f4ee-a796d491d87e/mzl.tdlbrroz.jpg/400x400bb.jpg",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        },  
-        {
-            image : "https://imgproxy7.tinhte.vn/maedY7eenghYbi23WfIY_sZ5Hl60W9YhhLpFYUTDD0c/rs:fill:400:400:0/plain/https://photo2.tinhte.vn/data/attachment-files/2018/12/4529439_Free_Download_Game_Far_Cry_3_Full_Crack.jpg",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        },
-        {
-            image : "https://imgproxy7.tinhte.vn/maedY7eenghYbi23WfIY_sZ5Hl60W9YhhLpFYUTDD0c/rs:fill:400:400:0/plain/https://photo2.tinhte.vn/data/attachment-files/2018/12/4529439_Free_Download_Game_Far_Cry_3_Full_Crack.jpg",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        },
-        {
-            image : "https://imgproxy7.tinhte.vn/maedY7eenghYbi23WfIY_sZ5Hl60W9YhhLpFYUTDD0c/rs:fill:400:400:0/plain/https://photo2.tinhte.vn/data/attachment-files/2018/12/4529439_Free_Download_Game_Far_Cry_3_Full_Crack.jpg",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        },
-        {
-            image : "https://imgproxy7.tinhte.vn/maedY7eenghYbi23WfIY_sZ5Hl60W9YhhLpFYUTDD0c/rs:fill:400:400:0/plain/https://photo2.tinhte.vn/data/attachment-files/2018/12/4529439_Free_Download_Game_Far_Cry_3_Full_Crack.jpg",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        }
+    const [games, setGames] = useState([])
+    useEffect(() => {
+        fetch('https://icgaming-server.onrender.com/game/game-api-v1?')
+            .then (res => res.json())
+            .then (data => setGames(data))
+    }, [])
 
-    ]
+    const GamesRandom = games.map(game => {
+        return {
+            url : `/games/${game.title.toLowerCase().split(' ').join('-')}`,
+            image : game.logoSite,
+            logo : game.logo
+        }
+    })
 
     const shuffledGamesRandom = shuffleArray(GamesRandom);
     let x = 0
-    let sliderGames = null
-    let listGamesRandomRef = null
+    let sliderGames = useRef()
     useEffect(() => {
         const listGames = document.getElementsByClassName('featuredGame')
-        listGamesRandomRef = document.querySelector('.listGamesRandom')
-        sliderGames = setInterval(() => {
+        const listGamesRandomRef = document.querySelector('.listGamesRandom')
+        sliderGames.current = setInterval(() => {
             let gameWidth = document.querySelector('.featuredGame').offsetWidth + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-right"))
             x += gameWidth
             listGamesRandomRef.style.transform= `translateX(${x * -1}px)`
@@ -70,9 +56,10 @@ function GamesRandom() {
             }, 500)
             listGamesRandomRef.style.transition = '0.5s'
         },3000)
+        
 
         return () => {
-            clearInterval(sliderGames)
+            clearInterval(sliderGames.current)
         }
     },[])
 
@@ -87,9 +74,10 @@ function GamesRandom() {
     let status = true
     const handleClickButton = (btnType) => {
         if (status == true) {
+            const listGamesRandomRef = document.querySelector('.listGamesRandom')
             status = false
             if (btnType == 'btnRight') {
-                clearInterval(sliderGames)
+                clearInterval(sliderGames.current)
                 const listGames = document.getElementsByClassName('featuredGame')
                 let gameWidth = document.querySelector('.featuredGame').offsetWidth + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-right"))
                 x += gameWidth
@@ -102,7 +90,7 @@ function GamesRandom() {
                 }, 500)
                 listGamesRandomRef.style.transition = '0.5s'
     
-                sliderGames = setInterval(() => {
+                sliderGames.current = setInterval(() => {
                     let gameWidth = document.querySelector('.featuredGame').offsetWidth + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-right"))
                     x += gameWidth
                     listGamesRandomRef.style.transform= `translateX(${x * -1}px)`
@@ -116,7 +104,7 @@ function GamesRandom() {
                 },3000)
                 setTimeout(() => {status = true},500)
             } else if (btnType == 'btnLeft') {
-                clearInterval(sliderGames)
+                clearInterval(sliderGames.current)
                 const listGames = document.getElementsByClassName('featuredGame')
                 let gameWidth = document.querySelector('.featuredGame').offsetWidth + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-right"))
                 
@@ -131,7 +119,7 @@ function GamesRandom() {
                     listGamesRandomRef.style.transform= `translateX(${x}px)`
                 }, 50)
     
-                sliderGames = setInterval(() => {
+                sliderGames.current = setInterval(() => {
                     let gameWidth = document.querySelector('.featuredGame').offsetWidth + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-right"))
                     x += gameWidth
                     listGamesRandomRef.style.transform= `translateX(${x * -1}px)`

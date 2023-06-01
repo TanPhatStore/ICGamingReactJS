@@ -8,14 +8,16 @@ function Header() {
 
     const [handle, data] = useContext(Context)
 
-    const [menuGamesPC, setMenuGamesPC] = useState(data.listGamesPC)
-    const [menuGamesMobile, setMenuGamesMobile] = useState(data.listGamesMobile)
+    const [menuGamesPC, setMenuGamesPC] = useState([])
+    const [menuGamesMobile, setMenuGamesMobile] = useState([])
     const subMenuGamesPCRef = useRef()
     const menuGamesPCRef = useRef()
     const subMenuGamesMobileRef = useRef()
     const menuGamesMobileRef = useRef()
 
     useEffect(() => {
+        setMenuGamesPC(data.listGamesPC)
+        setMenuGamesMobile(data.listGamesMobile)
         menuGamesPCRef.current.addEventListener('mouseover', () => {
             subMenuGamesPCRef.current.style.height = 50 * (menuGamesPC.length + 1) + 'px'
         })
@@ -30,12 +32,30 @@ function Header() {
         })
     })
 
+    const [listGames, setListGames] = useState([])
+    let list = []
+    const handleChangeInput = () => {
+        let value = document.querySelector('#txtsearch').value
+        const area = document.querySelector('#areaResultSearch')
+        if (value != '') {
+            area.style.height = '300px'
+        } else {
+            area.style.height = '0px'
+        }
+        list = []
+        data.games.forEach(game => {
+            if (game.title.toLowerCase().includes(value)) 
+                list.push(game)
+        })
+        setListGames(list)
+    }
+
 
     return (  
     <div  className="col-lg-12 header"> 
         <div className='col-lg-12 row'>
             <div id="logo" className='col-lg-2'> 
-                <img src={logo} height="80%"></img>
+                <img src={logo} height="70%"></img>
                 <div id="subLogo">
                     <p id='title' style={{fontSize:'23px'}}>IC GAMING</p>
                     <p id='description'>Download Game</p>
@@ -48,7 +68,7 @@ function Header() {
                     <div ref={subMenuGamesPCRef} className='submenu sub_menu_game'>
                         <ul style={{width:'100%'}}>
                             {menuGamesPC.map ((m, index) => (
-                                <li key={index} style={{width:'100%'}}> <Link className='link' onClick={handle.handleScrollUp} to={`list-games-page/${m.toLowerCase().split(' ').join('-')}-games`}><div id='gameImage'><img width={'100%'} src='https://www.playlanmym.com/wp-content/uploads/2019/03/GTA-SAN-ANDRES.png' /></div> {m}</Link></li>
+                                <li key={index} style={{width:'100%'}}> <Link className='link' onClick={handle.handleScrollUp} to={`list-games-page/${m.toLowerCase().split(' ').join('-')}-games`}><div id='gameImage'><img width={'100%'} src={data.PCLogo[index]} /></div> {m}</Link></li>
                             ))}
                             <li style={{width:'100%'}}> <Link onClick={handle.handleScrollUp} className='link' to="/list-games-page/all-games"><div id='gameImage'><img width={'100%'} src='https://pbs.twimg.com/profile_images/558750489152458752/pBBTFL0j_400x400.png' /></div> Xem Thêm.....</Link></li>
                         </ul>
@@ -58,7 +78,7 @@ function Header() {
                     <div ref={subMenuGamesMobileRef}  className='submenu sub_menu_game'>
                         <ul style={{width:'100%'}}>
                             {menuGamesMobile.map ((m, index) => (
-                                <li key={index} style={{width:'100%'}}><Link className='link' onClick={handle.handleScrollUp} to={`list-games-page/${m.toLowerCase().split(' ').join('-')}-games`}><div id='gameImage'><img width={'100%'} src='https://www.playlanmym.com/wp-content/uploads/2019/03/GTA-SAN-ANDRES.png' /></div> {m}</Link></li>
+                                <li key={index} style={{width:'100%'}}><Link className='link' onClick={handle.handleScrollUp} to={`list-games-page/${m.toLowerCase().split(' ').join('-')}-games`}><div id='gameImage'><img width={'100%'} src={data.MOLogo[index]} /></div> {m}</Link></li>
                             ))}
                             <li style={{width:'100%'}}><Link onClick={handle.handleScrollUp} className='link' to="/list-games-page/all-games"><div id='gameImage'><img width={'100%'} src='https://pbs.twimg.com/profile_images/558750489152458752/pBBTFL0j_400x400.png' /></div> Xem Thêm.....</Link></li>
                         </ul>
@@ -73,8 +93,25 @@ function Header() {
                     type='text' 
                     className="form-control"
                     placeholder="Search game..."
+                    onChange={() => handleChangeInput()}
                 />
                 <button id='btnsearch' type="button" className="btn btn-primary">Search</button> 
+                <div id='areaResultSearch' className='col-lg-12'>
+                    {listGames.map((game , index) => (
+                        <Link style={{color:'black', textDecoration:'none'}} onClick={() => {handle.handleScrollUp(); document.querySelector('#txtsearch').val(''); handleChangeInput()}} to={`/games/${game.title.toLowerCase().split(' ').join('-')}`}>
+                            <div key={index} className='col-lg-12 item'>
+                                
+                                    <div className='col-lg-3 image'>
+                                        <img width='85%' src={game.logo} />
+                                    </div>
+                                    <div className='px-1'></div>
+                                    <div className='col-lg-7 name'>
+                                        {game.title}
+                                    </div>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
             </div>
         </div>
     </div>

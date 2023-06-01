@@ -10,19 +10,15 @@ import logoCVB from '../vcb.webp'
 import logoMomo from '../momo.png'
 import logoZalo from '../zalo.webp'
 
-function GameDetailPage() {
+function GameDetailPage({game}) {
 
-    let handleChangeSlide = null
+    let handleChangeSlide = useRef()
     let x = 0
     let index = 0
     let listGames = useRef()
 
-    const listImages = [
-        "https://pitch-magnesium-3af.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fba1ac598-308f-4e9f-b27d-caa38202a528%2FNhiu_mu_sc_Ha_tit_v_Hnh_dng_Tru_tng_Li_chc_mng_Bn_thn_nht_Bn_thuyt_trnh_Vui_nhn_(10).png?table=block&id=b8cad322-db1e-447e-b14e-ff50e24ae579&spaceId=1a67c586-9ae3-4ad1-b17c-dc8466c4cac0&width=2000&userId=&cache=v2",
-        "https://pitch-magnesium-3af.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fba1ac598-308f-4e9f-b27d-caa38202a528%2FNhiu_mu_sc_Ha_tit_v_Hnh_dng_Tru_tng_Li_chc_mng_Bn_thn_nht_Bn_thuyt_trnh_Vui_nhn_(10).png?table=block&id=b8cad322-db1e-447e-b14e-ff50e24ae579&spaceId=1a67c586-9ae3-4ad1-b17c-dc8466c4cac0&width=2000&userId=&cache=v2",
-        "https://pitch-magnesium-3af.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fba1ac598-308f-4e9f-b27d-caa38202a528%2FNhiu_mu_sc_Ha_tit_v_Hnh_dng_Tru_tng_Li_chc_mng_Bn_thn_nht_Bn_thuyt_trnh_Vui_nhn_(10).png?table=block&id=b8cad322-db1e-447e-b14e-ff50e24ae579&spaceId=1a67c586-9ae3-4ad1-b17c-dc8466c4cac0&width=2000&userId=&cache=v2",
-        "https://pitch-magnesium-3af.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fba1ac598-308f-4e9f-b27d-caa38202a528%2FNhiu_mu_sc_Ha_tit_v_Hnh_dng_Tru_tng_Li_chc_mng_Bn_thn_nht_Bn_thuyt_trnh_Vui_nhn_(10).png?table=block&id=b8cad322-db1e-447e-b14e-ff50e24ae579&spaceId=1a67c586-9ae3-4ad1-b17c-dc8466c4cac0&width=2000&userId=&cache=v2"
-    ]
+
+    const listImages = game.images
 
 
     useEffect(() => {
@@ -123,23 +119,23 @@ function GameDetailPage() {
             <div className='col-lg-12 gameInfo'>
                 <div className='col-lg-4 info item'>
                     <div className='col-lg-12 title'>
-                        GTA San Andreas Definitive Edition (Game PC)
+                        {game.title + '  ('+ game.gameType +')'}
                     </div>
                     <div className='col-lg-12 detailInfo'>
                         <div className='col-lg-12 gender detailItem' >
-                            Thể Loại : Game Cướp Đường Phố, Game Hành Động, Game Bắn Súng, Game Phiêu Lưu
+                            Thể Loại : {game.gender}
                         </div>
                         <div className='col-lg-12 capacity detailItem'>
-                            Dung Lượng : 20GB
+                            Dung Lượng : {game.capacity}
                         </div>
                         <div className='col-lg-12 numberUser detailItem'>
-                            Số Người Chơi : Chơi Đơn
+                            Số Người Chơi : {game.numberUser}
                         </div>
                         <div className='col-lg-12 ram detailItem'>
-                            RAM Tối Thiểu : 8GB
+                            RAM Tối Thiểu : {game.ram}
                         </div>
                         <div className='col-lg-12 language detailItem'>
-                            Ngôn Ngữ : Tiếng Anh
+                            Ngôn Ngữ : {game.language}
                         </div>
                     </div>
                     <div className='btns'>
@@ -166,18 +162,14 @@ function GameDetailPage() {
             <div id='modalDownload' className='modal1'>
                 <div className='col-lg-12 row' style={{display:'flex', justifyContent: 'center'}}>
                     <div className='col-lg-4 logo'>
-                        <img src='https://www.pngmart.com/files/22/Grand-Theft-Auto-San-Andreas-Logo-PNG-Isolated-HD.png' width='90%'/>
+                        <img src={game.logo} width='90%'/>
                     </div>
                     <div className='col-lg-8 buttons'>
-                        <button className='col-lg-5'><a target="_blank" href='https://ducvu0sdsd.github.io/IC-gaming-downloadgame/GTA%20SAN/gtasantrilogy.html'>
-                            Part 1 <img src={logo_gg_drive} height='70%'/>
-                        </a></button>
-                        <button className='col-lg-5'><a target="_blank" href='https://ducvu0sdsd.github.io/IC-gaming-downloadgame/GTA%20SAN/gtasantrilogy.html'>
-                            Part 1 <img src={logo_gg_drive} height='70%'/>
-                        </a></button>
-                        <button className='col-lg-5'><a target="_blank" href='https://ducvu0sdsd.github.io/IC-gaming-downloadgame/GTA%20SAN/gtasantrilogy.html'>
-                            Part 1 <img src={logo_gg_drive} height='70%'/>
-                        </a></button>
+                        {game.linksDownload.map((link, index) => (
+                            <button className='col-lg-5'><a target="_blank" href={link}>
+                                Part {index + 1} <img src={logo_gg_drive} height='70%'/>
+                            </a></button>
+                        ))}
                     </div>
                     <button onClick={() => handleClickExit()} className='btnExit'><i className='bx bxs-x-square'></i></button>
                 </div>

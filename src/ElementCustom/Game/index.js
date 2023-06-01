@@ -1,6 +1,9 @@
 
 
+import { useContext } from 'react';
 import './game.scss'
+import { Link } from 'react-router-dom';
+import { Context } from '../../UseContext/Context';
 
 function Game({featuredGame, index}) {
 
@@ -26,15 +29,19 @@ function Game({featuredGame, index}) {
         smoothOver.style.opacity = '0'
     }
 
+    const [handle , data] = useContext(Context)
+
     return ( 
         <div onMouseOut={() => handleMouseOut(index)} onMouseOver={() => handleMouseOver(index)} className={"col-lg-3 featuredGame featuredGame"+index}>
-            <div className={'col-lg-12 gradientSmoothOut gradientSmoothOut'+index}></div>
-            <div className={'col-lg-12 gradientSmoothOver gradientSmoothOver'+index}></div>
-            <img className='featuredGameImage' src={featuredGame.image} width="100%"/>
-            <div className={'featuredGameLogo col-lg-5 featuredGameLogo'+index}>
-                <img width='100%' src={featuredGame.logo} />
-            </div>
-            <p className={'site site'+index}>Official Site</p>
+            <Link onClick={handle.handleScrollUp} to={featuredGame.url}>
+                <div className={'col-lg-12 gradientSmoothOut gradientSmoothOut'+index}></div>
+                <div className={'col-lg-12 gradientSmoothOver gradientSmoothOver'+index}></div>
+                <img className='featuredGameImage' src={featuredGame.image} width="100%"/>
+                <div className={'featuredGameLogo col-lg-5 featuredGameLogo'+index}>
+                    <img width='100%' src={featuredGame.logo} />
+                </div>
+                <p className={'site site'+index}>Official Site</p>
+            </Link>
         </div>
      );
 }

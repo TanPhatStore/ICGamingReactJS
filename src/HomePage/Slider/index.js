@@ -1,61 +1,35 @@
 
+import { Context } from '../../UseContext/Context'
 import './slider.scss'
-import { useEffect, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom';
 
-function Slider() {
+function Slider({games}) {
     let cateIndex1= 0
     let cateIndex2 = 0
-    const imagesPC =[
-        {
-            image : "https://wallpaperaccess.com/full/2553218.jpg",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        },
-        {
-            image : "https://cdn.nguyenkimmall.com/images/companies/_1/tin-tuc/review/game/game-valheim-pc-the-loai-sinh-ton-hoang-da.jpg",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        },
-        {
-            image : "https://img4.thuthuatphanmem.vn/uploads/2020/08/27/anh-nen-game-cho-may-tinh_061012920.jpg",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        },
-        {
-            image : "https://www.phucanh.vn/media/news/2502_top-5-tua-game-pc-ma-game-thu-nao-cung-nen-trai-nghiem-1.jpg",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        },
-        {
-            image : "https://jmb.com.vn/wp-content/uploads/2020/12/gta-v-roleplay-game-hanh-dong-danh-rieng-cho-pc-suc-hut-khong-the-ha-nhiet-huong-dan-gta-v-roleplay.jpg",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        },
-        {
-            image : "https://genk.mediacdn.vn/2016/1-1481536595671.jpg",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
+
+    const [handle] = useContext(Context)
+
+    const imagesPC = []
+    const imagesMobile = []
+    games.forEach(game => {
+        if (game.gameType == 'Game PC') {
+            imagesPC.push({
+                url : `/games/${game.title.toLowerCase().split(' ').join('-')}`,
+                image : game.images[0],
+                logo : game.logo
+            })
+        } else {
+            imagesMobile.push({
+                url : `/games/${game.title.toLowerCase().split(' ').join('-')}`,
+                image : game.images[0],
+                logo : game.logo
+            })
         }
-    ]
-    const imagesMobile = [
-        {
-            image : "https://www.pcinvasion.com/wp-content/uploads/2022/06/minecraft-legends-action-strategy-game-pc-2023-game-pass.jpg",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        },
-        {
-            image : "https://media.maybe.vn/attachments/god-of-war-2018-pc-port-jpg.20513/",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        },
-        {
-            image : "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8BrHuZoAREpZ3cZCf-MbzzMZQS0PrnRDJ6AFZzO2ctbZeQwqSNiBcjIYHrPWgLCDLAVMCT5BposDXaQHSg9rA_EWVveCexVgjF4Mlv8zSRjnkQcX-l_QFGEMctK_pGPuev2gkGkDUeKchTDPNjwaTiGqtqeUFlXBVKz0IXpvd-vilkSVuuaU48pQIGA/s1920/metallic-child-viet-hoa-aowvn-umu-game-pc.png",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        },
-        {
-            image : "https://gazettely.com/wp-content/uploads/2022/07/Hogwarts-Legacy-2.jpeg",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        },
-        {
-            image : "https://daominhha.net/wp-content/uploads/2022/03/egs-strangerofparadisefinalfantasyorigin-koeitecmogamescoltd-g1a-02-1920x1080-8896ec43df11.jpg",
-            logo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg/1200px-Grand_Theft_Auto_San_Andreas_-_The_Definitive_Edition_logo.svg.png"
-        }
-    ]
+    })
     const sliderRef = useRef()
-    const bannerRef1 = useRef()
-    const bannerRef2 = useRef()
+    let bannerRef1 = useRef()
+    let bannerRef2 = useRef()
     let listBanner1 = document.getElementsByClassName('banner1')
     let listBanner2 = document.getElementsByClassName('banner2')
     let cateItems1 = document.getElementsByClassName('cateItem1')
@@ -71,12 +45,16 @@ function Slider() {
     let size = 0
 
     useEffect (() => {
+
+        bannerRef1 = document.querySelector('.listBanner1')
+        bannerRef2 = document.querySelector('.listBanner2')
+
         sliding = (bannerRef,listBanner, valueSlider, cateIndex, number, time) => {
             for (let i =0 ; i< number; i++) {
-                bannerRef.current.style.transition = '0.8s'
+                bannerRef.style.transition = '0.8s'
                 size = sliderRef.current.offsetWidth
                 valueSlider += size
-                bannerRef.current.style.transform = `translateX(${-valueSlider}px)`
+                bannerRef.style.transform = `translateX(${-valueSlider}px)`
                 if (cateIndex == 1) {
                     if (cateIndex1 == listBanner.length - 1) {
                         cateIndex1=0
@@ -96,10 +74,10 @@ function Slider() {
                 }
         
                 setTimeout(()=> {
-                    bannerRef.current.style.transition = '0s'
+                    bannerRef.style.transition = '0s'
                     valueSlider = 0
-                    bannerRef.current.style.transform = `translateX(${-valueSlider}px)`
-                    bannerRef.current.appendChild(listBanner[0])
+                    bannerRef.style.transform = `translateX(${-valueSlider}px)`
+                    bannerRef.appendChild(listBanner[0])
                     isAllowChange1 = true
                     isAllowChange2 = true
                 },time)
@@ -174,14 +152,14 @@ function Slider() {
     return (<div style={{display:'flex', justifyContent:'center'}}>
         <div className="col-lg-12 sliders">
             <div ref={sliderRef} className="slider col-lg-5">
-                <div ref={bannerRef1} className='listBanner'>
+                <div className='listBanner listBanner1'>
                     {imagesPC.map((image, index) => (
                         <div onMouseOver={() => handleMouseOver(1)} onMouseOut={() => handleMouseOut(1)} key={index} className='banner banner1 col-lg-12'>
                             <img className='bannerImage1 bannerImage'   src={image.image} width='100%' height='100%' />
                             <div className='logoGame1 logoGame'>
                                 <div className='image'> 
                                     <img src={image.logo} height={'100%'}/>
-                                    <button type="button" className="btn btn-danger">Download Game</button>
+                                    <button type="button" className="btn btn-danger"><Link className='link' style={{color:'white'}} onClick={() => handle.handleScrollUp()} to={image.url}>Download Game</Link></button>
                                 </div>
                             </div>
                         </div>
@@ -189,23 +167,24 @@ function Slider() {
                 </div>
                 <div className='cateSliderParent'>
                     {imagesPC.map ((m,index) => (<div key={index} onClick={() => {
-                        if (isAllowChange1 === true) {
+                        if (isAllowChange1 == true) {
                             isAllowChange1 = false
                             cateSlider1 = index; 
+                            console.log(0)
                             handleClickCateSlider1()
                         }
                     }} className={index == 0 ? 'cateItem cateItem1 active1' : 'cateItem cateItem1'} > </div>))}
                 </div>
             </div> 
             <div className="slider col-lg-5">
-                <div ref={bannerRef2} className='listBanner'>
+                <div className='listBanner listBanner2'>
                     {imagesMobile.map((image, index) => (
                         <div onMouseOver={() => handleMouseOver(2)} onMouseOut={() => handleMouseOut(2)} key={index} className='banner banner2 col-lg-12'>
                         <img className='bannerImage2'   src={image.image} width='100%' height='100%' />
                         <div className='logoGame2 logoGame'>
                             <div  className='image'> 
                                 <img src={image.logo} height={'100%'}/>
-                                <button type="button" className="btn btn-danger">Download Game</button>
+                                <button type="button" className="btn btn-danger"><Link className='link' style={{color:'white'}} onClick={() => handle.handleScrollUp()} to={image.url}>Download Game</Link></button>
                             </div>
                         </div>
                     </div>
@@ -213,7 +192,7 @@ function Slider() {
                 </div>
                 <div className='cateSliderParent'>
                     {imagesMobile.map ((m,index) => (<div key={index} onClick={() => {
-                        if (isAllowChange2 === true) {
+                        if (isAllowChange2 == true) {
                             isAllowChange2 = false
                             cateSlider2 = index; 
                             handleClickCateSlider2()

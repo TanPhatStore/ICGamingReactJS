@@ -8,12 +8,16 @@
         justify-content: center;
 
         & .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
 
             & .title {
                 font-size: 1.7rem;
                 font-weight: 600;
-                height: 23%;
+                max-height: 23%;
                 margin: 0px 0;
+                
             }
 
             & .detailInfo {

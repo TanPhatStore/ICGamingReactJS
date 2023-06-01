@@ -66,6 +66,34 @@
             width: 22%;
             margin-top: 15px;
         }
+
+        & #areaResultSearch {
+            height: 0px;
+            width: 65%;
+            background-color: white;
+            transition: 0.5s;
+            border-radius: 0 0 10px 10px;
+            position: absolute;
+            top: 60px;
+            left: 4%;
+            overflow-y: auto;
+
+            & .item {
+                display: flex;
+                align-items: center;
+                height: 60px;
+                border-bottom: 1px solid rgb(190, 185, 185);
+
+                & .image {
+                    margin-left: 3%;
+                }
+
+                & .name {
+                    font-size: 14px;
+                    font-weight: bold;
+                }
+            }
+        }
     }
 
     & #menu {

@@ -22,7 +22,7 @@ function ListGamesPage({typeGame}) {
             <div className="menuGames col-lg-12">
                 <div className="menu ">
                     {menuItems.map((m,index) => (
-                        <Link className='link' onClick={handle.handleScrollUp} to={m == 'All Games' ? `/list-games-page/all-games` : `/list-games-page/${m.toLowerCase().split(' ').join('-')}-games`}>
+                        <Link key={index} className='link' onClick={handle.handleScrollUp} to={m == 'All Games' ? `/list-games-page/all-games` : `/list-games-page/${m.toLowerCase().split(' ').join('-')}-games`}>
                             <div onClick={() => handleClickMenu(index)} key={index} className={m.toLowerCase().split(' ').join('-') != typeGame ? 'menuItem menuItem'+index : 'menuItem active menuItem'+index}>
                                 {m}
                             </div>
@@ -31,7 +31,8 @@ function ListGamesPage({typeGame}) {
                     ))}
                 </div>
             </div>
-            <ListGames />
+            <div className='boxChildren'></div>
+            <ListGames typeGame={typeGame}/>
             <div className='boxParent'></div>
         </div>
      );

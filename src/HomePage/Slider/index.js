@@ -166,13 +166,21 @@ function Slider({games}) {
         })
     }
 
+    let widthSlider = useRef()
+    useEffect(() => {
+        const getwidth = setInterval(() => {
+            widthSlider = document.querySelector('.slider1').offsetWidth
+        }, 1000)
+        return () => {clearInterval(getwidth)}
+    }, [])
+
     return (<div style={{display:'flex', justifyContent:'center'}}>
         <div className="col-lg-12 sliders">
-            <div ref={sliderRef} className="slider col-lg-5 col-12">
+            <div ref={sliderRef} className="slider slider1 col-lg-5 col-11">
                 <div className='listBanner listBanner1'>
                     {imagesPC.map((image, index) => (
-                        <div onMouseOver={() => handleMouseOver(1)} onMouseOut={() => handleMouseOut(1)} key={index} className='banner banner1 col-lg-12'>
-                            <img className='bannerImage1 bannerImage'   src={image.image} width='100%' height='100%' />
+                        <div onMouseOver={() => handleMouseOver(1)} onMouseOut={() => handleMouseOut(1)} key={index} className='banner banner1 col-lg-12 col-12'>
+                            <img className='bannerImage1 bannerImage' src={image.image} width='100%'  />
                             <div className='logoGame1 logoGame'>
                                 <div className='image'> 
                                     <img src={image.logo} height={'100%'}/>
@@ -192,7 +200,7 @@ function Slider({games}) {
                     }} className={index == 0 ? 'cateItem cateItem1 active1' : 'cateItem cateItem1'} > </div>))}
                 </div>
             </div> 
-            <div className="slider col-lg-5 col-0">
+            <div className="slider slider2 col-lg-5 col-0">
                 <div className='listBanner listBanner2'>
                     {imagesMobile.map((image, index) => (
                         <div onMouseOver={() => handleMouseOver(2)} onMouseOut={() => handleMouseOut(2)} key={index} className='banner banner2 col-lg-12'>

@@ -89,3 +89,12 @@
         }
     }
 }
+
+@media screen and (min-width: 100px) and (max-width: 1200px) {
+    #areaFeaturedGame {
+
+        & .titleFeaturedGame {
+            font-size: 30px;
+        }
+    }
+}

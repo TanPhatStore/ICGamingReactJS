@@ -90,5 +90,8 @@
 }
 
 @media screen and (min-width: 100px) and (max-width: 1200px) {
-
+    .slider2 {
+        display: none;
+        overflow: hidden;
+    }
 }

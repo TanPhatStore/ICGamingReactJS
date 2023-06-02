@@ -191,6 +191,9 @@
 #infoMobile {
     display: none;
 }
+.box2 {
+    display: none;
+}
 
 @media screen and (min-width: 100px) and (max-width: 1200px) {
     #infoPC {
@@ -199,6 +202,12 @@
     #infoMobile {
         margin-top: 30px;
         display: block;
+
+        .btns {
+            .button {
+                font-size: 17px;
+            }
+        }
     }
 
     .gameDetail {
@@ -206,4 +215,12 @@
             flex-wrap: wrap
         }
     }
+
+    .box1 {
+        display: none;
+    }
+    .box2 {
+        display: block;
+    }
+
 }

@@ -115,7 +115,8 @@ function GameDetailPage({game}) {
 
     return ( 
         <div className='gameDetail'>
-            <div className='boxParent'></div>
+            <div className='boxParent box1'></div>
+            <div className='boxChildren box2'></div>
             <div className='col-lg-12 gameInfo '>
                 <div id='infoPC' className='col-lg-4 info item'>
                     <div className='col-lg-12 title'>

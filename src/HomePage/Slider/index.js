@@ -7,12 +7,29 @@ import { Link } from 'react-router-dom';
 function Slider({games}) {
     let cateIndex1= 0
     let cateIndex2 = 0
+    const shuffleArray = (array) => {
+        const shuffledArray = [...array];
+        let currentIndex = shuffledArray.length;
+      
+        while (currentIndex > 0) {
+          const randomIndex = Math.floor(Math.random() * currentIndex);
+      
+          currentIndex--;
+      
+          const temporaryValue = shuffledArray[currentIndex];
+          shuffledArray[currentIndex] = shuffledArray[randomIndex];
+          shuffledArray[randomIndex] = temporaryValue;
+        }
+      
+        return shuffledArray;
+    }
+    const gamesArr = shuffleArray(games) 
 
     const [handle] = useContext(Context)
 
     const imagesPC = []
     const imagesMobile = []
-    games.forEach(game => {
+    gamesArr.forEach(game => {
         if (game.gameType == 'Game PC') {
             imagesPC.push({
                 url : `/games/${game.title.toLowerCase().split(' ').join('-')}`,
@@ -170,7 +187,6 @@ function Slider({games}) {
                         if (isAllowChange1 == true) {
                             isAllowChange1 = false
                             cateSlider1 = index; 
-                            console.log(0)
                             handleClickCateSlider1()
                         }
                     }} className={index == 0 ? 'cateItem cateItem1 active1' : 'cateItem cateItem1'} > </div>))}

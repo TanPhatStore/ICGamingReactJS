@@ -7,7 +7,26 @@ import { Context } from '../../UseContext/Context';
 
 function FeaturedGame({games}) {
 
-    const featuredGames = games.map(game => {
+    
+    const shuffleArray = (array) => {
+        const shuffledArray = [...array];
+        let currentIndex = shuffledArray.length;
+      
+        while (currentIndex > 0) {
+          const randomIndex = Math.floor(Math.random() * currentIndex);
+      
+          currentIndex--;
+      
+          const temporaryValue = shuffledArray[currentIndex];
+          shuffledArray[currentIndex] = shuffledArray[randomIndex];
+          shuffledArray[randomIndex] = temporaryValue;
+        }
+      
+        return shuffledArray;
+    }
+    const gamesArr = shuffleArray(games)
+
+    const featuredGames = gamesArr.map(game => {
         return {
             url : `/games/${game.title.toLowerCase().split(' ').join('-')}`,
             image : game.logoSite,

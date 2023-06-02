@@ -35,7 +35,7 @@ function Header() {
     const [listGames, setListGames] = useState([])
     let list = []
     const handleChangeInput = () => {
-        let value = document.querySelector('#txtsearch').value
+        let value = document.querySelector('#txtsearch').value.toLowerCase()
         const area = document.querySelector('#areaResultSearch')
         if (value != '') {
             area.style.height = '300px'
@@ -98,7 +98,7 @@ function Header() {
                 <button id='btnsearch' type="button" className="btn btn-primary">Search</button> 
                 <div id='areaResultSearch' className='col-lg-12'>
                     {listGames.map((game , index) => (
-                        <Link style={{color:'black', textDecoration:'none'}} onClick={() => {handle.handleScrollUp(); document.querySelector('#txtsearch').val(''); handleChangeInput()}} to={`/games/${game.title.toLowerCase().split(' ').join('-')}`}>
+                        <Link style={{color:'black', textDecoration:'none'}} onClick={() => {handle.handleScrollUp() ;}} to={`/games/${game.title.toLowerCase().split(' ').join('-')}`}>
                             <div key={index} className='col-lg-12 item'>
                                 
                                     <div className='col-lg-3 image'>

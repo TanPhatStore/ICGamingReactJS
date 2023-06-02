@@ -16,7 +16,7 @@ function Provider({children}) {
 
     const [games, setGames] = useState([])
     useEffect(() => {
-        fetch('https://ic-gaming-api-v1.vercel.app/')
+        fetch('https://ic-gaming-node-js.vercel.app/game/game-api-v1?')
         .then (res => res.json())
         .then (d => setGames(d))
     }, [])

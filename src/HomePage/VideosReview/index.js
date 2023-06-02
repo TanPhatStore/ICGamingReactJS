@@ -51,15 +51,15 @@ function VideosReview() {
                 </div>
             </div>
             <div className='menuVideosMobile'>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                <div className="dropdown">
+                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                         Video Games
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item active" href="#">GTA</a></li>
-                        <li><a class="dropdown-item" href="#">Naruto Shippudent</a></li>
-                        <li><a class="dropdown-item" href="#">Far Cry</a></li>
-                        <li><a class="dropdown-item" href="#">Plant vs Zombies</a></li>
+                    <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                        <li><a className="dropdown-item active" href="#">GTA</a></li>
+                        <li><a className="dropdown-item" href="#">Naruto Shippudent</a></li>
+                        <li><a className="dropdown-item" href="#">Far Cry</a></li>
+                        <li><a className="dropdown-item" href="#">Plant vs Zombies</a></li>
                     </ul>
                 </div>
             </div>

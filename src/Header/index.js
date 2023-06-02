@@ -51,7 +51,7 @@ function Header({opa}) {
     }
 
     const handleClickMenuMO = () => {   
-        opa.style.disPlay = 'block'
+        opa.style.display = 'block'
         console.log(opa)
         // opa.style.backgroundColor = 'rgba(52, 51, 51, 0.7)'
     }

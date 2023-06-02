@@ -9,10 +9,47 @@ import {Routes , Route} from 'react-router-dom'
 import { useContext } from 'react';
 import { Context } from './UseContext/Context';
 import { useState, useEffect } from 'react';
+import './App.scss';
+import logo from '../src/icgaming.png'
 
 function App() {
 
   const [handle, data] = useContext(Context)
+
+  const [isPC , setIsPC ] = useState(false)
+  const handleClickPC = () => {
+    const subArea = document.querySelector('.subMenuItemPC')
+    if (isPC == true)  {
+      subArea.style.height = '0px'
+      setIsPC(false)
+    } else {
+      subArea.style.height = '200px'
+      setIsPC(true)
+    }
+  }
+
+
+  const [isMobile , setIsMobile ] = useState(false)
+  const handleClickMobile = () => {
+    const subArea = document.querySelector('.subMenuItemMobile')
+    if (isMobile == true)  {
+      subArea.style.height = '0px'
+      setIsMobile(false)
+    } else {
+      subArea.style.height = '200px'
+      setIsMobile(true)
+    }
+  }
+
+  const handleExitMenu = () => {
+    const opa = document.querySelector('#effectOpacity')
+    const menu = document.querySelector('#menuMobile')
+    menu.style.left = '-300px'
+    opa.style.backgroundColor = 'rgba(52, 51, 51, 0.0)'
+    setTimeout(() => {
+      opa.style.display = 'none'
+    }, 500)
+  }
 
   return (
     <div className="App">
@@ -32,7 +69,21 @@ function App() {
 
       <Footer />
       <div id='menuMobile'>
-
+          <div className='headerMO'>
+            <div className='logoMobile'>
+              <img src={logo} height='80%' width="100%" />
+            </div>
+            <p>IC GAMING</p>
+            <i onClick={() => handleExitMenu()} className="fa-regular fa-circle-xmark"></i>
+          </div>
+          <div className='menuMO'>
+            <div className='menuItemMO'>Home</div>
+            <div className='menuItemMO' onClick={() => handleClickPC()}>Games PC <i className='bx bxs-chevron-down'></i></div>
+            <div className='subMenuItemPC subMenuItemMO'></div>
+            <div className='menuItemMO' onClick={() => handleClickMobile()}>Games Mobile <i className='bx bxs-chevron-down'></i></div>
+            <div className='subMenuItemMobile subMenuItemMO'></div>
+            <div className='menuItemMO'>Contact</div>
+          </div>
       </div>
       <div id='effectOpacity'>
 

@@ -21,25 +21,36 @@
     top: 0;
     z-index: 5;
 
-    & #logo {
+    & .iconMobile {
         height: 100%;
-        // background-color: aqua;
+        font-size: 35px;
+        width: 50px;
+        margin-left: 10px;
+        line-height: 60px;
+        display: none;
+    }
+
+    & .logo {
+        height: 100%;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
         cursor: pointer;
+        width: 220px;
     
         & #subLogo {
-            width: 60%;
+            width: 70%;
             height: 85%;
             font-weight: 600;
+            margin-left: 5px;
 
             & #title {
-
+                font-size: 1.4rem;
             }
 
             & #description {
                 margin-top: -22px;
+                font-size: 0.9rem;
             }
         }
     }
@@ -174,5 +185,39 @@
             color: black;
         }
 
+    }
+}
+
+
+@media screen and (min-width: 100px) and (max-width: 1200px) {
+    .header {
+        height: 55px;
+
+        & #menu, & #search {
+            display: none;
+        }
+
+        & .logo {
+            // background-color: aqua;
+            width: 170px;
+
+            & img {
+                display: none;
+            }
+
+            & #subLogo {
+                width: 100%;
+                margin: 0;
+            }
+        }
+
+        & .iconSearch {
+            position: absolute;
+            right: 10px;
+        }
+
+        & .iconMobile {
+            display: block;
+        }
     }
 }

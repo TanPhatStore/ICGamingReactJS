@@ -52,15 +52,18 @@ function Header() {
 
 
     return (  
-    <div  className="col-lg-12 header"> 
-        <div className='col-lg-12 row'>
-            <div id="logo" className='col-lg-2'> 
+    <div  className="col-lg-12 col-12 header"> 
+        <div className='col-lg-12 col-12 row'>
+            <div className='iconMobile col-lg-1'><i className="fa-solid fa-bars"></i></div>
+            <div className='iconSearch iconMobile'><i className="fa-solid fa-magnifying-glass fa-rotate-90"></i></div>
+            <div className='col-lg-2 logo'> 
                 <img src={logo} height="70%"></img>
                 <div id="subLogo">
-                    <p id='title' style={{fontSize:'23px'}}>IC GAMING</p>
+                    <p id='title'>IC GAMING</p>
                     <p id='description'>Download Game</p>
                 </div>
-            </div>          
+            </div>  
+
 
             <ul id='menu' className='col-lg-5'>
                 <li><Link onClick={handle.handleScrollUp} className='link' to="/">Home</Link></li>

@@ -168,7 +168,7 @@ function Slider({games}) {
 
     return (<div style={{display:'flex', justifyContent:'center'}}>
         <div className="col-lg-12 sliders">
-            <div ref={sliderRef} className="slider col-lg-5">
+            <div ref={sliderRef} className="slider col-lg-5 col-12">
                 <div className='listBanner listBanner1'>
                     {imagesPC.map((image, index) => (
                         <div onMouseOver={() => handleMouseOver(1)} onMouseOut={() => handleMouseOut(1)} key={index} className='banner banner1 col-lg-12'>
@@ -192,7 +192,7 @@ function Slider({games}) {
                     }} className={index == 0 ? 'cateItem cateItem1 active1' : 'cateItem cateItem1'} > </div>))}
                 </div>
             </div> 
-            <div className="slider col-lg-5">
+            <div className="slider col-lg-5 col-0">
                 <div className='listBanner listBanner2'>
                     {imagesMobile.map((image, index) => (
                         <div onMouseOver={() => handleMouseOver(2)} onMouseOut={() => handleMouseOut(2)} key={index} className='banner banner2 col-lg-12'>

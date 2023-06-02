@@ -88,3 +88,12 @@
         }
     }
 }
+
+@media screen and (min-width: 100px) and (max-width: 1200px) {
+    #videosReview {
+
+        & .titleVideosReview {
+            font-size: 30px;
+        }
+    }
+}

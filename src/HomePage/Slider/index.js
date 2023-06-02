@@ -176,7 +176,7 @@ function Slider({games}) {
 
     return (<div style={{display:'flex', justifyContent:'center'}}>
         <div className="col-lg-12 sliders">
-            <div ref={sliderRef} className="slider slider1 col-lg-5 col-11">
+            <div ref={sliderRef} className="slider slider1 col-lg-5 col-12">
                 <div className='listBanner listBanner1'>
                     {imagesPC.map((image, index) => (
                         <div onMouseOver={() => handleMouseOver(1)} onMouseOut={() => handleMouseOut(1)} key={index} className='banner banner1 col-lg-12 col-12'>

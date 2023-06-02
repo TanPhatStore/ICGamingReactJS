@@ -50,7 +50,20 @@ function VideosReview() {
                     ))}
                 </div>
             </div>
-            <div className="boxParent"></div>
+            <div className='menuVideosMobile'>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                        Video Games
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                        <li><a class="dropdown-item active" href="#">GTA</a></li>
+                        <li><a class="dropdown-item" href="#">Naruto Shippudent</a></li>
+                        <li><a class="dropdown-item" href="#">Far Cry</a></li>
+                        <li><a class="dropdown-item" href="#">Plant vs Zombies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div className="boxChildren"></div>
             <div className="col-lg-12" style={{display:'flex', justifyContent : 'center'}}>
                 <div className="col-lg-11 listVideoItem">
                     {image.map((item, index) => (

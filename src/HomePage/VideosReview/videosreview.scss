@@ -87,6 +87,12 @@
             }
         }
     }
+
+    & .menuVideosMobile {
+        margin-top: 30px;
+        margin-left: 15px;
+        display: none;
+    }
 }
 
 @media screen and (min-width: 100px) and (max-width: 1200px) {
@@ -94,6 +100,15 @@
 
         & .titleVideosReview {
             font-size: 30px;
+            margin-bottom: -10px;
+        }
+
+        & .menuVideosReview {
+            display: none;
+        }
+        
+        & .menuVideosMobile {
+            display: block;
         }
     }
 }

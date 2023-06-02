@@ -52,12 +52,17 @@ function Header({opa}) {
 
     const handleClickMenuMO = () => {   
         opa.style.display = 'block'
-        console.log(opa)
-        // opa.style.backgroundColor = 'rgba(52, 51, 51, 0.7)'
+        setTimeout(() => {
+            opa.style.backgroundColor = 'rgba(52, 51, 51, 0.7)'
+        },100)
     }
 
     return (  
     <div  className="col-lg-12 col-12 header"> 
+        <div id='menuMobile'>
+            
+        </div>
+
         <div className='col-lg-12 col-12 row'>
             <div className='iconMobile col-lg-1' onClick={() => handleClickMenuMO()}><i className="fa-solid fa-bars"></i></div>
             <div className='iconSearch iconMobile'><i className="fa-solid fa-magnifying-glass fa-rotate-90"></i></div>

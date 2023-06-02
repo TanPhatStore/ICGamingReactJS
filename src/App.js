@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header opa = {document.querySelector('#effectOpacity')} />
       <div className='boxParent'></div>
 
       <Routes>
@@ -31,6 +31,9 @@ function App() {
       </Routes>
 
       <Footer />
+      <div id='effectOpacity'>
+
+      </div>
     </div>
   );
 }

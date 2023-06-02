@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Context } from "./Context";
 
+
 function Provider({children}) {
 
     let handle = {
@@ -19,6 +20,7 @@ function Provider({children}) {
         .then (res => res.json())
         .then (d => setGames(d))
     }, [])
+
     const listGames = []
     const listGamesPC = []
     const listGamesMobile = []

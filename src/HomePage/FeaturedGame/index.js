@@ -40,7 +40,7 @@ function FeaturedGame({games}) {
         <div id="areaFeaturedGame">
             <h1 className="titleFeaturedGame col-lg-12">Featured Games</h1>
             <div style={{display:'flex',justifyContent: 'center'}}>
-                <div className=" FeaturedGameRow col-lg-11">
+                <div className=" FeaturedGameRow col-lg-11 col-12">
                     {featuredGames.map((featuredGame,index) => {
                         return <Game key={index} featuredGame={featuredGame} index = {index} />
                     })}

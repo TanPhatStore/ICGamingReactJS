@@ -194,7 +194,7 @@ function GameDetailPage({game}) {
                     </div>
                     <div className='col-lg-8 buttons'>
                         {game.linksDownload.map((link, index) => (
-                            <button className='col-lg-5'><a target="_blank" href={link}>
+                            <button key={index} className='col-lg-5'><a target="_blank" href={link}>
                                 Part {index + 1} <img src={logo_gg_drive} height='70%'/>
                             </a></button>
                         ))}

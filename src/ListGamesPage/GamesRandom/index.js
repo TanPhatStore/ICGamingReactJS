@@ -1,7 +1,7 @@
 
 
 import './gamesRandom.scss'
-import Game from '../../ElementCustom/Game'
+import Game from '../../ElementCustom/GameRan'
 import {useEffect, useRef, useState} from 'react'
 
 function GamesRandom() {

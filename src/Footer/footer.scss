@@ -78,3 +78,23 @@
         }
     }
 }
+
+@media screen and (min-width: 100px) and (max-width: 1200px) {
+    .chooseFooter p{
+        font-size: 17px;
+    }
+    .wrapperFooter {
+        flex-wrap: wrap;
+        justify-content: left;
+        & .footer {
+            & .chooseFooter {
+                margin: 0;
+                height: 40px;
+            }
+
+            & .aboutMe {
+                font-size: 16px;
+            }
+        }
+    }
+}

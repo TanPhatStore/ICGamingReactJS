@@ -16,16 +16,20 @@ function Provider({children}) {
     const [games, setGames] = useState([])
     const [datas, setDatas] = useState([])
     useEffect(() => {
-        // fetch('https://icgaming-server.onrender.com/game/game-api-v1?')
-        //     .then (res => res.json())
-        //     .then (d => {
-        //         localStorage.setItem('data', JSON.stringify(d))
-        //     })
+        const readAPI = setInterval( () => {
+            fetch('https://icgaming-server.onrender.com/game/game-api-v1?')
+            .then (res => res.json())
+            .then (d => {
+                localStorage.setItem('data', JSON.stringify(d))
+            })
+        },300000)
         const storedData = localStorage.getItem('data');
         if (storedData) {
             const parsedData = JSON.parse(storedData);
             setGames(parsedData);
         }
+
+        return clearInterval(readAPI)
     }, [])
     const listGames = []
     const listGamesPC = []

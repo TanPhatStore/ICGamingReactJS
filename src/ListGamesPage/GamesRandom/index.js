@@ -139,7 +139,7 @@ function GamesRandom() {
 
     return ( 
         <div className='wrapperGamesRandom col-lg-12' style={{overflow:'hidden'}}>
-            <div id="gamesRandom" className='col-lg-9'>
+            <div id="gamesRandom" className='col-lg-9 col-12'>
                 <div className='listGamesRandom'>
                     {shuffledGamesRandom.map((GameRandom,index) => (<Game key={index} featuredGame={GameRandom} index = {index}/>))}
                 </div>

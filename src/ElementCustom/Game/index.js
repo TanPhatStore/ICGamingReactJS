@@ -32,7 +32,7 @@ function Game({featuredGame, index}) {
     const [handle , data] = useContext(Context)
 
     return ( 
-        <div onMouseOut={() => handleMouseOut(index)} onMouseOver={() => handleMouseOver(index)} className={"col-lg-3 featuredGame featuredGame"+index}>
+        <div onMouseOut={() => handleMouseOut(index)} onMouseOver={() => handleMouseOver(index)} className={"col-lg-3 col-6 featuredGame featuredGame"+index}>
             <Link onClick={handle.handleScrollUp} to={featuredGame.url}>
                 <div className={'col-lg-12 gradientSmoothOut gradientSmoothOut'+index}></div>
                 <div className={'col-lg-12 gradientSmoothOver gradientSmoothOver'+index}></div>

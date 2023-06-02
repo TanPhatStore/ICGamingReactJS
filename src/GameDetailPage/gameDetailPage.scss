@@ -113,7 +113,7 @@
         width: 500px;
         position: fixed;
         left: 50%;
-        top: -40%;
+        top: -100%;
         transform: translateX(-50%);
         background-color: white;
         border-radius: 4px;
@@ -186,4 +186,24 @@
     }
 
     position: relative;
+}
+
+#infoMobile {
+    display: none;
+}
+
+@media screen and (min-width: 100px) and (max-width: 1200px) {
+    #infoPC {
+        display: none;
+    }
+    #infoMobile {
+        margin-top: 30px;
+        display: block;
+    }
+
+    .gameDetail {
+        & .gameInfo {
+            flex-wrap: wrap
+        }
+    }
 }

@@ -109,15 +109,15 @@ function GameDetailPage({game}) {
 
     const handleClickExit = () => {
         $('.opa').css('display', 'none')
-        $('#modalDownload').css('top', '-40%')
-        $('#modalDonate').css('top', '-40%')
+        $('#modalDownload').css('top', '-100%')
+        $('#modalDonate').css('top', '-1000%')
     }
 
     return ( 
         <div className='gameDetail'>
             <div className='boxParent'></div>
-            <div className='col-lg-12 gameInfo'>
-                <div className='col-lg-4 info item'>
+            <div className='col-lg-12 gameInfo '>
+                <div id='infoPC' className='col-lg-4 info item'>
                     <div className='col-lg-12 title'>
                         {game.title + '  ('+ game.gameType +')'}
                     </div>
@@ -144,7 +144,7 @@ function GameDetailPage({game}) {
                     </div>
                     
                 </div>
-                <div className='col-lg-6 images item'>
+                <div className='col-lg-6 col-11 images item'>
                     <div className='listGames' ref={listGames}>
                         {listImages.map ((image, index) => (
                             <img className='imageGameItem' key={index} src={image}  width='100%' />
@@ -152,6 +152,33 @@ function GameDetailPage({game}) {
                     </div>
                     <button onClick={() => handleChangePrev()} className='button buttonPrev'><i className='bx bxs-left-arrow'></i></button>
                     <button onClick={() => handleChangeNext()} className='button buttonNext'><i className='bx bxs-right-arrow'></i></button>
+                </div>
+                <div id='infoMobile' className='col-lg-4 col-11 info item'>
+                    <div className='col-lg-12 title'>
+                        {game.title + '  ('+ game.gameType +')'}
+                    </div>
+                    <div className='col-lg-12 detailInfo'>
+                        <div className='col-lg-12 gender detailItem' >
+                            Thể Loại : {game.gender}
+                        </div>
+                        <div className='col-lg-12 capacity detailItem'>
+                            Dung Lượng : {game.capacity}
+                        </div>
+                        <div className='col-lg-12 numberUser detailItem'>
+                            Số Người Chơi : {game.numberUser}
+                        </div>
+                        <div className='col-lg-12 ram detailItem'>
+                            RAM Tối Thiểu : {game.ram}
+                        </div>
+                        <div className='col-lg-12 language detailItem'>
+                            Ngôn Ngữ : {game.language}
+                        </div>
+                    </div>
+                    <div className='btns'>
+                        <button onClick={() => handleClickDownload()} className='button btnDownload'>Download For Free</button>
+                        <button onClick={() => handleClickDonate()} className='button btnDonate'>Donate</button>
+                    </div>
+                    
                 </div>
             </div>
             <div className='boxParent'></div>

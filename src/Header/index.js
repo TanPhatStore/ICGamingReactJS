@@ -4,7 +4,7 @@ import logo from '../icgaming.png'
 import {useEffect, useRef, useState, useContext} from 'react'
 import { Context } from '../UseContext/Context';
 import { Link } from 'react-router-dom';
-function Header({opa}) {
+function Header({val}) {
 
     const [handle, data] = useContext(Context)
 
@@ -51,18 +51,15 @@ function Header({opa}) {
     }
 
     const handleClickMenuMO = () => {   
-        opa.style.display = 'block'
+        val.opa.style.display = 'block'
         setTimeout(() => {
-            opa.style.backgroundColor = 'rgba(52, 51, 51, 0.7)'
+            val.opa.style.backgroundColor = 'rgba(52, 51, 51, 0.7)'
         },100)
+        val.menu.style.left = 0
     }
 
     return (  
-    <div  className="col-lg-12 col-12 header"> 
-        <div id='menuMobile'>
-            
-        </div>
-
+    <div  className="col-lg-12 col-12 header">
         <div className='col-lg-12 col-12 row'>
             <div className='iconMobile col-lg-1' onClick={() => handleClickMenuMO()}><i className="fa-solid fa-bars"></i></div>
             <div className='iconSearch iconMobile'><i className="fa-solid fa-magnifying-glass fa-rotate-90"></i></div>

@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header opa = {document.querySelector('#effectOpacity')} />
+      <Header val = {{ opa : document.querySelector('#effectOpacity'), menu : document.querySelector('#menuMobile')}} />
       <div className='boxParent'></div>
 
       <Routes>
@@ -31,6 +31,9 @@ function App() {
       </Routes>
 
       <Footer />
+      <div id='menuMobile'>
+
+      </div>
       <div id='effectOpacity'>
 
       </div>

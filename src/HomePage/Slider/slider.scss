@@ -94,4 +94,20 @@
         display: none;
         overflow: hidden;
     }
+    .sliders {
+        & .slider {
+
+            & .cateSliderParent {
+                top: 80%;
+            }
+
+            & .listBanner { 
+                & .banner {
+                    & .logoGame {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
 }

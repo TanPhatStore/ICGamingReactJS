@@ -12,16 +12,16 @@ function Footer() {
                     <img src={logo} height="100%" />
                 </div>
                 <div className="footer col-lg-7 col-12">
-                    <div className="col-lg-2 col-3 chooseFooter">
+                    <div className="col-lg-2 col-4 chooseFooter">
                         <p>Games Library</p>
                     </div>
-                    <div className="col-lg-2 col-3 chooseFooter">
+                    <div className="col-lg-2 col-4 chooseFooter">
                         <p>Action Games</p>
                     </div>
-                    <div className="col-lg-2 col-3 chooseFooter">
+                    <div className="col-lg-2 col-4 chooseFooter">
                         <p>Fighting Games</p>
                     </div>
-                    <div className="col-lg-2 col-3  chooseFooter">
+                    <div className="col-lg-2 col-4  chooseFooter">
                         <p>Family Games</p>
                     </div>
                     <div className="col-lg-12 col-11" style={{display:'flex', justifyContent : 'center',marginBottom : '20px'}}>

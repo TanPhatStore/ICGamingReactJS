@@ -16,7 +16,7 @@ function Provider({children}) {
 
     const [games, setGames] = useState([])
     useEffect(() => {
-        fetch('https://icgaming-server.onrender.com/game/game-api-v1?')
+        fetch('https://ic-gaming-api-v1.vercel.app/')
         .then (res => res.json())
         .then (d => setGames(d))
     }, [])

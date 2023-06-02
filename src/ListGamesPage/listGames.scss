@@ -37,3 +37,19 @@
 .link:hover {
     color: black;
 } 
+.menuVideosMobile {
+    display: none;
+}
+
+@media screen and (min-width: 100px) and (max-width: 1200px) {
+    #listGames {
+        & .menuGames {
+            display: none;
+        }
+    }
+    .menuVideosMobile {
+        display: block;
+        transform: translateY(40px);
+        margin-left: 35px;
+    }
+}

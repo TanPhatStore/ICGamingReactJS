@@ -15,10 +15,16 @@ function Provider({children}) {
     }
 
     const [games, setGames] = useState([])
+    const startTime = performance.now();
     useEffect(() => {
         fetch('https://ic-gaming-node-js.vercel.app/game/game-api-v1?')
         .then (res => res.json())
-        .then (d => setGames(d))
+        .then (d => {
+            const endTime = performance.now();
+            const elapsedTime = endTime - startTime;
+            console.log('Thời gian phản hồi:', elapsedTime, 'ms');
+            setGames(d)
+        })
     }, [])
 
     const listGames = []

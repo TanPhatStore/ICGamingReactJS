@@ -58,7 +58,7 @@ function VideosReview() {
                     </button>
                     <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                         {menuItems.map((m,index) => (
-                            <li><a class="dropdown-item" href="#">{m}</a></li>
+                            <li key={index}><a className="dropdown-item" href="#">{m}</a></li>
                         ))}
                     </ul>
                 </div>

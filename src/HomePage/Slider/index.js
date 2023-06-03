@@ -204,14 +204,14 @@ function Slider({games}) {
                 <div className='listBanner listBanner2'>
                     {imagesMobile.map((image, index) => (
                         <div onMouseOver={() => handleMouseOver(2)} onMouseOut={() => handleMouseOut(2)} key={index} className='banner banner2 col-lg-12'>
-                        <img className='bannerImage2'   src={image.image} width='100%' height='100%' />
-                        <div className='logoGame2 logoGame'>
-                            <div  className='image'> 
-                                <img src={image.logo} height={'100%'}/>
-                                <button type="button" className="btn btn-danger"><Link className='link' style={{color:'white'}} onClick={() => handle.handleScrollUp()} to={image.url}>Download Game</Link></button>
+                            <img className='bannerImage2'   src={image.image} width='100%' height='100%' />
+                            <div className='logoGame2 logoGame'>
+                                <div  className='image'> 
+                                    <img src={image.logo} height={'100%'}/>
+                                    <button type="button" className="btn btn-danger"><Link className='link' style={{color:'white'}} onClick={() => handle.handleScrollUp()} to={image.url}>Download Game</Link></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     ))}
                 </div>
                 <div className='cateSliderParent'>

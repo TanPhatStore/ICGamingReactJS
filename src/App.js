@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react';
 import './App.scss';
 import logo from '../src/icgaming.png'
 import { Link } from 'react-router-dom';
+import Loading from './ElementCustom/Loading'
 
 function App() {
 
@@ -77,6 +78,17 @@ function App() {
 
 
   }
+
+  const [haveData, setHaveData] = useState(false)
+  const checkData = setInterval(() => {
+    console.log(1)
+    if (data.games.length > 0) {
+      setHaveData(true)
+      clearInterval(checkData)
+    }
+  }, 100);
+
+
   const handleChangeInput = () => {
       let value = document.querySelector('.txtSearchMobile').value.toLowerCase()
       list = []
@@ -92,16 +104,18 @@ function App() {
       <Header val = {{ opa : document.querySelector('#effectOpacity'), menu : document.querySelector('#menuMobile'), search : document.querySelector('#searchMobile')}} />
       <div className='boxParent'></div>
 
-      <Routes>
-        <Route path='/' element={<HomePage />} /> 
-        <Route path='/list-games-page/all-games' element={<ListGamesPage typeGame={'all-games'} />} /> 
-        {data.listGames.map((item, index) => (
-            <Route key={index} path={`/list-games-page/${item.toLowerCase().split(' ').join('-')}-games`} element={<ListGamesPage typeGame={`${item.toLowerCase().split(' ').join('-')}`} />} /> 
-        ))}
-        {data.games.map((game, index) => (
-            <Route key={index} path={`/games/${game.title.toLowerCase().split(' ').join('-')}`} element={<GameDetailPage game={game} />}  /> 
-        ))}
-      </Routes>
+      {haveData == true ? 
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/list-games-page/all-games' element={<ListGamesPage typeGame={'all-games'} />} /> 
+          {data.listGames.map((item, index) => (
+              <Route key={index} path={`/list-games-page/${item.toLowerCase().split(' ').join('-')}-games`} element={<ListGamesPage typeGame={`${item.toLowerCase().split(' ').join('-')}`} />} /> 
+          ))}
+          {data.games.map((game, index) => (
+              <Route key={index} path={`/games/${game.title.toLowerCase().split(' ').join('-')}`} element={<GameDetailPage game={game} />}  /> 
+          ))}
+        </Routes> : <Loading  />
+      }
 
       <Footer />
       <div id='searchMobile'>

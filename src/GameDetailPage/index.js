@@ -9,6 +9,7 @@ import logo from '../icgaming.png'
 import logoCVB from '../vcb.webp'
 import logoMomo from '../momo.png'
 import logoZalo from '../zalo.webp'
+import YouTube from 'react-youtube';
 
 function GameDetailPage({game}) {
 
@@ -113,6 +114,11 @@ function GameDetailPage({game}) {
         $('#modalDonate').css('top', '-1000%')
     }
 
+    const opts = {
+        width: '100%',
+        height : '400px'
+    };
+
     return ( 
         <div className='gameDetail'>
             <div className='boxParent box1'></div>
@@ -183,9 +189,24 @@ function GameDetailPage({game}) {
                 </div>
             </div>
             <div className='boxParent'></div>
-            <div className='boxChildren'></div>
-            <h1></h1>
+            
+
+
+            <div className='col-lg-12 video_des'>
+                <div className='video col-lg-6'>
+                    <YouTube videoId='b1vHozxOy8' opts={opts}  />
+                </div>
+                <div className='col-lg-4 des'>p</div>
+            </div>
+
+
+
+
+
+
+            <div className='boxParent'></div>      
             <GamesRandom />
+            <div className='boxParent'></div> 
             <div className='opa'></div>
             <div id='modalDownload' className='modal1'>
                 <div className='col-lg-12 row' style={{display:'flex', justifyContent: 'center'}}>

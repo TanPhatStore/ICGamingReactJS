@@ -1,9 +1,9 @@
 
 import { useContext } from 'react'
 import './videosreview.scss'
-import ReactPlayer from 'react-player'
 import { Context } from '../../UseContext/Context'
 import { Link } from 'react-router-dom'
+import YouTube from 'react-youtube';
 
 
 function VideosReview() {
@@ -39,6 +39,10 @@ function VideosReview() {
     const [handle, data] = useContext(Context)
     const menuItems = data.listGames
 
+    const opts = {
+        width: '100%',
+        height : '200px'
+    };
     return ( 
         <div id="videosReview" className="col-lg-12">
             <h1 className="titleVideosReview col-lg-12">Videos Review</h1>
@@ -70,13 +74,13 @@ function VideosReview() {
                     {image.map((item, index) => (
                         <div key={index} onMouseOut={() => handleOutVideo(index)} onMouseOver={() => handleHoverVideo(index)} className={"col-lg-3 videoItem videoItem" + index}>
                             <div className="col-lg-12 videoImage item">
-                                <img src={item} width='100%' height="100%"  />
+                                <YouTube videoId='rRXePbq8ATM' opts={opts}  />
                             </div>
                             <div className='col-lg-12 videoDate item'>
                                 <span className='title'>Date Submitted</span>
                                 <span className='date'>Apr 6, 2023</span>
                             </div>
-                            <div className='col-lg-12 item videoTitle'>
+                            <div id='videoMO' className='col-lg-12 item videoTitle'>
                                 Tạo giao diện đăng ký với Java Swing - UI Design | CJ Coding (No Taking)
                             </div>
                         </div>

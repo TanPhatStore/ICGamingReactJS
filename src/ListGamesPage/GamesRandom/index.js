@@ -45,7 +45,7 @@ function GamesRandom() {
         const listGames = document.getElementsByClassName('featuredGame')
         const listGamesRandomRef = document.querySelector('.listGamesRandom')
         sliderGames.current = setInterval(() => {
-            let gameWidth = document.querySelector('.featuredGame').offsetWidth + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-right"))
+            let gameWidth = listGames[0].offsetWidth + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-right"))
             x += gameWidth
             listGamesRandomRef.style.transform= `translateX(${x * -1}px)`
             setTimeout (() => {

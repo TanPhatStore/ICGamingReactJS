@@ -1,5 +1,5 @@
 
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import './videosreview.scss'
 import { Context } from '../../UseContext/Context'
 import { Link } from 'react-router-dom'
@@ -43,6 +43,9 @@ function VideosReview() {
         width: '100%',
         height : '200px'
     };
+
+
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
     return ( 
         <div id="videosReview" className="col-lg-12">
             <h1 className="titleVideosReview col-lg-12">Videos Review</h1>
@@ -71,17 +74,17 @@ function VideosReview() {
             <div className="boxChildren"></div>
             <div className="col-lg-12" style={{display:'flex', justifyContent : 'center'}}>
                 <div className="col-lg-11 listVideoItem">
-                    {image.map((item, index) => (
+                    {data.games.map((game, index) => (
                         <div key={index} onMouseOut={() => handleOutVideo(index)} onMouseOver={() => handleHoverVideo(index)} className={"col-lg-3 videoItem videoItem" + index}>
                             <div className="col-lg-12 videoImage item">
-                                <YouTube videoId='rRXePbq8ATM' opts={opts}  />
+                                <YouTube videoId={game.video} opts={opts}  />
                             </div>
                             <div className='col-lg-12 videoDate item'>
                                 <span className='title'>Date Submitted</span>
-                                <span className='date'>Apr 6, 2023</span>
+                                <span className='date'>{new Date(game.dateVideo).toLocaleDateString('en-US', options)}</span>
                             </div>
                             <div id='videoMO' className='col-lg-12 item videoTitle'>
-                                Tạo giao diện đăng ký với Java Swing - UI Design | CJ Coding (No Taking)
+                                {game.titleVideo}
                             </div>
                         </div>
                     ))}

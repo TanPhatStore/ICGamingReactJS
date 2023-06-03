@@ -6,6 +6,7 @@
     & .video_des {
         display: flex;
         justify-content: space-evenly;
+        flex-wrap: wrap;
 
         & .video {
             border-radius: 15px;

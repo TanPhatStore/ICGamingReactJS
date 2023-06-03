@@ -192,11 +192,11 @@ function GameDetailPage({game}) {
             
 
 
-            <div className='col-lg-12 video_des'>
-                <div className='video col-lg-6'>
+            <div className='col-lg-12 col-12 video_des'>
+                <div className='video col-lg-6 col-11'>
                     <YouTube videoId={game.video} opts={opts}  />
                 </div>
-                <div className='col-lg-4 des'>p</div>
+                <div className='col-lg-4 col-11  des'>p</div>
             </div>
 
 

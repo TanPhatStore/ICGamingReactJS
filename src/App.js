@@ -55,20 +55,41 @@ function App() {
       setIsMobile(true)
     }
   }
-
+  const [listGames, setListGames] = useState([])
+  let list = []
   const handleExitMenu = () => {
     const opa = document.querySelector('#effectOpacity')
     const menu = document.querySelector('#menuMobile')
+    const search = document.querySelector('#searchMobile')
+    search.style.right = '-300px'
     menu.style.left = '-300px'
     opa.style.backgroundColor = 'rgba(52, 51, 51, 0.0)'
     setTimeout(() => {
       opa.style.display = 'none'
     }, 500)
+    document.querySelector('.subMenuItemMobile').style.height = '0px'
+    setIsMobile(false)
+    document.querySelector('.subMenuItemPC').style.height = '0px'
+    setIsPC(false)
+
+    document.querySelector('.txtSearchMobile').value = ''
+    setListGames([])
+
+
+  }
+  const handleChangeInput = () => {
+      let value = document.querySelector('.txtSearchMobile').value.toLowerCase()
+      list = []
+      data.games.forEach(game => {
+          if (game.title.toLowerCase().includes(value)) 
+              list.push(game)
+      })
+      setListGames(list)
   }
 
   return (
     <div className="App">
-      <Header val = {{ opa : document.querySelector('#effectOpacity'), menu : document.querySelector('#menuMobile')}} />
+      <Header val = {{ opa : document.querySelector('#effectOpacity'), menu : document.querySelector('#menuMobile'), search : document.querySelector('#searchMobile')}} />
       <div className='boxParent'></div>
 
       <Routes>
@@ -83,6 +104,37 @@ function App() {
       </Routes>
 
       <Footer />
+      <div id='searchMobile'>
+        <div className='headerMO'>
+          <div className='logoMobile'>
+            <img src={logo} height='80%' width="100%" />
+          </div>
+          <p>IC GAMING</p>
+          <i onClick={() => handleExitMenu()} className="fa-regular fa-circle-xmark"></i>
+        </div>
+        <div className='searchArea'>
+          <input 
+            onChange={() => handleChangeInput()}
+            type='text' 
+            className="form-control col-11 txtSearchMobile" 
+            placeholder="Search game..."
+          />
+        </div>
+        <div className='resultMobile'>
+          {listGames.map((game, index) => (
+            <div key={index} onClick={() => handleExitMenu()} className='resultItem col-12'>
+              <Link className='col-12' style={{color:'black', textDecoration:'none' , display:'flex', justifyContent:  'space-around'}} onClick={() => {handle.handleScrollUp() ;}} to={`/games/${game.title.toLowerCase().split(' ').join('-')}`}>
+                <div className='logoR col-2'>
+                  <img height='100%' src={game.logo}/>
+                </div>
+                <div className='titleR col-9'>
+                  {game.title}
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
       <div id='menuMobile'>
           <div className='headerMO'>
             <div className='logoMobile'>
@@ -110,7 +162,7 @@ function App() {
             <div className='menuItemMO' onClick={() =>  {handle.handleScrollDown(); handleExitMenu()}}>Contact</div>
           </div>
       </div>
-      <div id='effectOpacity'>
+      <div id='effectOpacity' onClick={() => handleExitMenu()}>
 
       </div>
     </div>

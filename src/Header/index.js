@@ -58,11 +58,26 @@ function Header({val}) {
         val.menu.style.left = 0
     }
 
+    const handleClickSearch = () => {
+        val.opa.style.display = 'block'
+        setTimeout(() => {
+            val.opa.style.backgroundColor = 'rgba(52, 51, 51, 0.7)'
+        },100)
+        val.search.style.right = 0
+    }
+
+    const handleCloseSearch = () => {
+        const area = document.querySelector('#areaResultSearch')
+        area.style.height = '0px'
+        setListGames([])
+        document.querySelector('#txtsearch').value = ''
+    }
+
     return (  
     <div  className="col-lg-12 col-12 header">
         <div className='col-lg-12 col-12 row'>
             <div className='iconMobile col-lg-1' onClick={() => handleClickMenuMO()}><i className="fa-solid fa-bars"></i></div>
-            <div className='iconSearch iconMobile'><i className="fa-solid fa-magnifying-glass fa-rotate-90"></i></div>
+            <div className='iconSearch iconMobile' onClick={() => handleClickSearch()} ><i className="fa-solid fa-magnifying-glass fa-rotate-90"></i></div>
             <div className='col-lg-2 logo'> 
                 <img src={logo} height="70%"></img>
                 <div id="subLogo">
@@ -105,10 +120,9 @@ function Header({val}) {
                     placeholder="Search game..."
                     onChange={() => handleChangeInput()}
                 />
-                <button id='btnsearch' type="button" className="btn btn-primary">Search</button> 
                 <div id='areaResultSearch' className='col-lg-12'>
                     {listGames.map((game , index) => (
-                        <Link style={{color:'black', textDecoration:'none'}} onClick={() => {handle.handleScrollUp() ;}} to={`/games/${game.title.toLowerCase().split(' ').join('-')}`}>
+                        <Link style={{color:'black', textDecoration:'none'}} onClick={() => {handle.handleScrollUp() ; handleCloseSearch()}} to={`/games/${game.title.toLowerCase().split(' ').join('-')}`}>
                             <div key={index} className='col-lg-12 item'>
                                 
                                     <div className='col-lg-3 image'>

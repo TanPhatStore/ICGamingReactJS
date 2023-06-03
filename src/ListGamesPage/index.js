@@ -37,10 +37,9 @@ function ListGamesPage({typeGame}) {
                         Games
                     </button>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item active" href="#">GTA</a></li>
-                        <li><a class="dropdown-item" href="#">Naruto Shippudent</a></li>
-                        <li><a class="dropdown-item" href="#">Far Cry</a></li>
-                        <li><a class="dropdown-item" href="#">Plant vs Zombies</a></li>
+                        {menuItems.map((m,index) => (
+                            <li><Link key={index} className='link' onClick={handle.handleScrollUp} to={m == 'All Games' ? `/list-games-page/all-games` : `/list-games-page/${m.toLowerCase().split(' ').join('-')}-games`}><a class="dropdown-item" href="#">{m}</a></Link></li>
+                        ))}
                     </ul>
                 </div>
             </div>

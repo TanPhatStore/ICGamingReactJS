@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import './videosreview.scss'
 import ReactPlayer from 'react-player'
 import { Context } from '../../UseContext/Context'
+import { Link } from 'react-router-dom'
 
 
 function VideosReview() {
@@ -56,13 +57,13 @@ function VideosReview() {
                         Video Games
                     </button>
                     <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                        <li><a className="dropdown-item active" href="#">GTA</a></li>
-                        <li><a className="dropdown-item" href="#">Naruto Shippudent</a></li>
-                        <li><a className="dropdown-item" href="#">Far Cry</a></li>
-                        <li><a className="dropdown-item" href="#">Plant vs Zombies</a></li>
+                        {menuItems.map((m,index) => (
+                            <li><a class="dropdown-item" href="#">{m}</a></li>
+                        ))}
                     </ul>
                 </div>
             </div>
+            <div className="boxChildren"></div>
             <div className="boxChildren"></div>
             <div className="col-lg-12" style={{display:'flex', justifyContent : 'center'}}>
                 <div className="col-lg-11 listVideoItem">

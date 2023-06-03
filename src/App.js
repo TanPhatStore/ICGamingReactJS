@@ -81,7 +81,6 @@ function App() {
 
   const [haveData, setHaveData] = useState(false)
   const checkData = setInterval(() => {
-    console.log(1)
     if (data.games.length > 0) {
       setHaveData(true)
       clearInterval(checkData)

@@ -3,7 +3,7 @@
     height: 900px;
     width: 300px;
     background-color: white;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -300px;
     transition: 0.5s;
@@ -46,7 +46,7 @@
         margin:0 30px;
 
         & .menuItemMO {
-            margin: 20px 0;
+            margin-top: 20px;
             padding-bottom: 8px;
             border-bottom: 1px solid #333;
             display: flex;
@@ -55,11 +55,30 @@
             transition: 0.5s;
         }
 
+        & .menuItemMO:hover {
+            color: red;
+        }
+
         & .subMenuItemMO {
             height: 0px;
-            background-color: aquamarine;
-            width: 40px;
+            // background-color: aquamarine;
+            width: 100%;
+            max-height: 300px;
             transition: 0.5s;
+            overflow-y: scroll;
+
+            & .submenu {
+                margin-top: 20px;
+                padding-left: 20px;
+                padding-bottom: 8px;
+                border-bottom: 1px solid #a19e9e;
+                color: #a19e9e;
+                font-size: 16px;
+            }
+
+            & .submenu:hover {
+                color: rgb(241, 86, 86);
+            }
         }
     }
 }

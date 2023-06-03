@@ -11,6 +11,7 @@ import { Context } from './UseContext/Context';
 import { useState, useEffect } from 'react';
 import './App.scss';
 import logo from '../src/icgaming.png'
+import { Link } from 'react-router-dom';
 
 function App() {
 
@@ -19,11 +20,18 @@ function App() {
   const [isPC , setIsPC ] = useState(false)
   const handleClickPC = () => {
     const subArea = document.querySelector('.subMenuItemPC')
+    const num = document.getElementsByClassName('submenuPC').length
+
+    if (document.querySelector('.subMenuItemMobile').offsetHeight > 0) {
+      document.querySelector('.subMenuItemMobile').style.height = '0px'
+      setIsMobile(false)
+    }
+
     if (isPC == true)  {
       subArea.style.height = '0px'
       setIsPC(false)
     } else {
-      subArea.style.height = '200px'
+      subArea.style.height = 52.727 * num + 'px'
       setIsPC(true)
     }
   }
@@ -32,11 +40,18 @@ function App() {
   const [isMobile , setIsMobile ] = useState(false)
   const handleClickMobile = () => {
     const subArea = document.querySelector('.subMenuItemMobile')
+    const num = document.getElementsByClassName('submenuMobile').length
+
+    if (document.querySelector('.subMenuItemPC').offsetHeight > 0) {
+      document.querySelector('.subMenuItemPC').style.height = '0px'
+      setIsPC(false)
+    }
+
     if (isMobile == true)  {
       subArea.style.height = '0px'
       setIsMobile(false)
     } else {
-      subArea.style.height = '200px'
+      subArea.style.height = 52.727 * num + 'px'
       setIsMobile(true)
     }
   }
@@ -77,12 +92,22 @@ function App() {
             <i onClick={() => handleExitMenu()} className="fa-regular fa-circle-xmark"></i>
           </div>
           <div className='menuMO'>
-            <div className='menuItemMO'>Home</div>
+            <div className='menuItemMO'><Link onClick={() => {handle.handleScrollUp(); handleExitMenu()}} className='link' to="/">Home</Link></div>
             <div className='menuItemMO' onClick={() => handleClickPC()}>Games PC <i className='bx bxs-chevron-down'></i></div>
-            <div className='subMenuItemPC subMenuItemMO'></div>
+            <div className='subMenuItemPC subMenuItemMO'>
+              {data.listGamesPC.map((menu, index) => (
+                <div key={index} className='submenuPC submenu'><Link className='link' onClick={() => {handle.handleScrollUp() ; handleExitMenu()}} to={`list-games-page/${menu.toLowerCase().split(' ').join('-')}-games`}>{menu}</Link></div>
+              ))}
+              <div className='submenuPC submenu'><Link onClick={() => {handle.handleScrollUp() ; handleExitMenu()}} className='link' to="/list-games-page/all-games">All Games</Link></div>
+            </div>
             <div className='menuItemMO' onClick={() => handleClickMobile()}>Games Mobile <i className='bx bxs-chevron-down'></i></div>
-            <div className='subMenuItemMobile subMenuItemMO'></div>
-            <div className='menuItemMO'>Contact</div>
+            <div className='subMenuItemMobile subMenuItemMO'>
+              {data.listGamesMobile.map((menu, index) => (
+                <div key={index} className='submenuMobile submenu'><Link className='link' onClick={() => {handle.handleScrollUp() ; handleExitMenu()}} to={`list-games-page/${menu.toLowerCase().split(' ').join('-')}-games`}>{menu}</Link></div>
+              ))}
+              <div className='submenuMobile submenu'><Link onClick={() => {handle.handleScrollUp() ; handleExitMenu()}} className='link' to="/list-games-page/all-games">All Games</Link></div>
+            </div>
+            <div className='menuItemMO' onClick={() =>  {handle.handleScrollDown(); handleExitMenu()}}>Contact</div>
           </div>
       </div>
       <div id='effectOpacity'>

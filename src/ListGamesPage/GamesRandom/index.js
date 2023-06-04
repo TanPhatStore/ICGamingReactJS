@@ -3,6 +3,8 @@
 import './gamesRandom.scss'
 import Game from '../../ElementCustom/GameRan'
 import {useEffect, useRef, useState} from 'react'
+import { useContext } from 'react';
+import { Context } from '../../UseContext/Context';
 
 function GamesRandom() {
 
@@ -24,11 +26,8 @@ function GamesRandom() {
     }
 
     const [games, setGames] = useState([])
-    useEffect(() => {
-        fetch('https://icgaming-server.onrender.com/game/game-api-v1?')
-            .then (res => res.json())
-            .then (data => setGames(data))
-    }, [])
+    const [handle, data] = useContext(Context)
+    setGames(data.games)
 
     const GamesRandom = games.map(game => {
         return {
@@ -44,20 +43,18 @@ function GamesRandom() {
     useEffect(() => {
         const listGames = document.getElementsByClassName('featuredGame')
         const listGamesRandomRef = document.querySelector('.listGamesRandom')
-        if (listGames.length > 0) {
-            sliderGames.current = setInterval(() => {
-                let gameWidth = listGames[0].offsetWidth + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-right"))
-                x += gameWidth
+        sliderGames.current = setInterval(() => {
+            let gameWidth = listGames[0].offsetWidth + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-right"))
+            x += gameWidth
+            listGamesRandomRef.style.transform= `translateX(${x * -1}px)`
+            setTimeout (() => {
+                listGamesRandomRef.style.transition = '0s'
+                x = 0
                 listGamesRandomRef.style.transform= `translateX(${x * -1}px)`
-                setTimeout (() => {
-                    listGamesRandomRef.style.transition = '0s'
-                    x = 0
-                    listGamesRandomRef.style.transform= `translateX(${x * -1}px)`
-                    listGamesRandomRef.appendChild(listGames[0])
-                }, 500)
-                listGamesRandomRef.style.transition = '0.5s'
-            },3000)
-        }
+                listGamesRandomRef.appendChild(listGames[0])
+            }, 500)
+            listGamesRandomRef.style.transition = '0.5s'
+        },3000)
         
 
         return () => {

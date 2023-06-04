@@ -55,7 +55,7 @@ function VideosReview() {
                 </div>
             </div>
             <div className='menuVideosMobile' style={{zIndex : 12}}>
-                <div className="dropdown" style={{zIndex : 12}}>
+                <div className="dropdown" >
                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                         Video Games
                     </button>
@@ -68,7 +68,7 @@ function VideosReview() {
             </div>
             <div className="boxChildren"></div>
             <div className="boxChildren"></div>
-            <div className="col-lg-12" style={{display:'flex', justifyContent : 'center'}}>
+            <div className="col-lg-12" style={{display:'flex', justifyContent : 'center', zIndex:4}}>
                 <div className="col-lg-11 listVideoItem">
                     {data.games.map((game, index) => {
                         if (typeVideo == 'All Games') {

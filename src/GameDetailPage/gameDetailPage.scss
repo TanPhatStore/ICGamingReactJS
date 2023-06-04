@@ -14,7 +14,16 @@
         }
 
         & .des {
-            background-color: aqua;
+
+            & h3 {
+                text-align: center;
+                line-height: 40px;
+            }
+
+            & .description {
+                padding: 0 20px;
+                font-size: 17px;
+            }
         }
     }
 

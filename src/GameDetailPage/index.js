@@ -146,7 +146,7 @@ function GameDetailPage({game}) {
                         </div>
                     </div>
                     <div className='btns'>
-                        <button onClick={() => handleClickDownload()} className='button btnDownload'>Download For Free</button>
+                        <button onClick={() => handleClickDownload()} className='button btnDownload'>Download Free</button>
                         <button onClick={() => handleClickDonate()} className='button btnDonate'>Donate</button>
                     </div>
                     

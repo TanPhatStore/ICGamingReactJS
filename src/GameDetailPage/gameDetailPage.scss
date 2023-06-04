@@ -3,6 +3,16 @@
 .gameDetail {
     background-color: #f3f3f3;
 
+    & .video_get .description {
+        text-align: center;
+    }
+
+    & .video_get .des{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
     & .video_des {
         display: flex;
         justify-content: space-evenly;

@@ -203,6 +203,20 @@ function GameDetailPage({game}) {
                     </div>
                 </div>
             </div>
+            <div className='boxParent'></div>
+            <div className='col-lg-12 col-12 video_get video_des'>
+                <div className='col-lg-4 col-11  des'>
+                    <h3>Cách Lấy Link Download Game</h3>
+                    <div className='description'>
+                        <p>Đây là cách để mà mình tạo ra kinh phí để tiếp tục phát triển kênh</p>
+                        <p>Mình mong các bạn chịu khó dành ra giúp mình khoảng 30 giây thao tác để lấy link download để ủng hộ mình nhé ❤️❤️</p>
+                        <p>Xin Cảm Ơn !!!!</p>
+                    </div>  
+                </div>
+                <div className='video col-lg-6 col-11'>
+                    <YouTube videoId='d5YASqJnjRY' opts={opts}  />
+                </div>
+            </div>
 
 
 

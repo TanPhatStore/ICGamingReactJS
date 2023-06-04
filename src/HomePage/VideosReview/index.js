@@ -37,7 +37,7 @@ function VideosReview() {
         height : '200px'
     };
 
-
+    let iVideo = 0
 
     const options = { month: 'long', day: 'numeric', year: 'numeric' };
     return ( 
@@ -69,33 +69,37 @@ function VideosReview() {
             <div className="col-lg-12" style={{display:'flex', justifyContent : 'center', zIndex:4}}>
                 <div className="col-lg-11 listVideoItem">
                     {data.games.map((game, index) => {
-                        if (typeVideo == 'All Games') {
-                            return <div key={index} onMouseOut={() => handleOutVideo(index)} onMouseOver={() => handleHoverVideo(index)} className={"col-lg-3 videoItem videoItem" + index}>
-                                    <div className="col-lg-12 videoImage item">
-                                        <YouTube videoId={game.video} opts={opts}  />
-                                    </div>
-                                    <div className='col-lg-12 videoDate item'>
-                                        <span className='title'>Date Submitted</span>
-                                        <span className='date'>{new Date(game.dateVideo).toLocaleDateString('en-US', options)}</span>
-                                    </div>
-                                    <div id='videoMO' className='col-lg-12 item videoTitle'>
-                                        {game.titleVideo}
-                                    </div>
-                                </div>
-                        } else {
-                            if (game.series == typeVideo) {
+                        if (iVideo < 6 ){
+                            if (typeVideo == 'All Games') {
+                                iVideo ++
                                 return <div key={index} onMouseOut={() => handleOutVideo(index)} onMouseOver={() => handleHoverVideo(index)} className={"col-lg-3 videoItem videoItem" + index}>
-                                    <div className="col-lg-12 videoImage item">
-                                        <YouTube videoId={game.video} opts={opts}  />
+                                        <div className="col-lg-12 videoImage item">
+                                            <YouTube videoId={game.video} opts={opts}  />
+                                        </div>
+                                        <div className='col-lg-12 videoDate item'>
+                                            <span className='title'>Date Submitted</span>
+                                            <span className='date'>{new Date(game.dateVideo).toLocaleDateString('en-US', options)}</span>
+                                        </div>
+                                        <div id='videoMO' className='col-lg-12 item videoTitle'>
+                                            {game.titleVideo}
+                                        </div>
                                     </div>
-                                    <div className='col-lg-12 videoDate item'>
-                                        <span className='title'>Date Submitted</span>
-                                        <span className='date'>{new Date(game.dateVideo).toLocaleDateString('en-US', options)}</span>
+                            } else {
+                                if (game.series == typeVideo) {
+                                    iVideo++
+                                    return <div key={index} onMouseOut={() => handleOutVideo(index)} onMouseOver={() => handleHoverVideo(index)} className={"col-lg-3 videoItem videoItem" + index}>
+                                        <div className="col-lg-12 videoImage item">
+                                            <YouTube videoId={game.video} opts={opts}  />
+                                        </div>
+                                        <div className='col-lg-12 videoDate item'>
+                                            <span className='title'>Date Submitted</span>
+                                            <span className='date'>{new Date(game.dateVideo).toLocaleDateString('en-US', options)}</span>
+                                        </div>
+                                        <div id='videoMO' className='col-lg-12 item videoTitle'>
+                                            {game.titleVideo}
+                                        </div>
                                     </div>
-                                    <div id='videoMO' className='col-lg-12 item videoTitle'>
-                                        {game.titleVideo}
-                                    </div>
-                                </div>
+                                }
                             }
                         }
                     })}

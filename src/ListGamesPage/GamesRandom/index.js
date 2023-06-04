@@ -25,9 +25,8 @@ function GamesRandom() {
         return shuffledArray;
     }
 
-    const [games, setGames] = useState([])
     const [handle, data] = useContext(Context)
-    setGames(data.games)
+    const games = data.games
 
     const GamesRandom = games.map(game => {
         return {

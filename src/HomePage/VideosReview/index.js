@@ -9,9 +9,7 @@ import YouTube from 'react-youtube';
 function VideosReview() {
 
     const [handle, data] = useContext(Context)
-    const menuItems = data.listGames
-    if (menuItems[menuItems.length-1] != 'All Games')
-        menuItems.push('All Games')
+    const menuItems = [...data.listGames, 'All Games']
     const [typeVideo, setTypeVideo] = useState(menuItems[0])
 
     const handleClickMenu = (num, m) => {

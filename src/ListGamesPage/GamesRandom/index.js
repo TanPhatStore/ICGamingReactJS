@@ -44,18 +44,20 @@ function GamesRandom() {
     useEffect(() => {
         const listGames = document.getElementsByClassName('featuredGame')
         const listGamesRandomRef = document.querySelector('.listGamesRandom')
-        sliderGames.current = setInterval(() => {
-            let gameWidth = listGames[0].offsetWidth + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-right"))
-            x += gameWidth
-            listGamesRandomRef.style.transform= `translateX(${x * -1}px)`
-            setTimeout (() => {
-                listGamesRandomRef.style.transition = '0s'
-                x = 0
+        if (listGames.length > 0) {
+            sliderGames.current = setInterval(() => {
+                let gameWidth = listGames[0].offsetWidth + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-left")) + parseFloat(window.getComputedStyle(document.querySelector('.featuredGame')).getPropertyValue("margin-right"))
+                x += gameWidth
                 listGamesRandomRef.style.transform= `translateX(${x * -1}px)`
-                listGamesRandomRef.appendChild(listGames[0])
-            }, 500)
-            listGamesRandomRef.style.transition = '0.5s'
-        },3000)
+                setTimeout (() => {
+                    listGamesRandomRef.style.transition = '0s'
+                    x = 0
+                    listGamesRandomRef.style.transform= `translateX(${x * -1}px)`
+                    listGamesRandomRef.appendChild(listGames[0])
+                }, 500)
+                listGamesRandomRef.style.transition = '0.5s'
+            },3000)
+        }
         
 
         return () => {

@@ -8,22 +8,19 @@ import YouTube from 'react-youtube';
 
 function VideosReview() {
 
+    const [handle, data] = useContext(Context)
+    const menuItems = data.listGames
+    if (menuItems[menuItems.length-1] != 'All Games')
+        menuItems.push('All Games')
+    const [typeVideo, setTypeVideo] = useState(menuItems[0])
 
-    const handleClickMenu = (num) => {
+    const handleClickMenu = (num, m) => {
         const active = document.querySelector(".active")
         const currentMenuItem = document.querySelector('.menuItem' + num)
         active.classList.remove('active')
         currentMenuItem.classList.add('active')
+        setTypeVideo(m)
     }
-
-    const image = [
-        "https://i9.ytimg.com/vi/Bf3P_07WuOA/mqdefault.jpg?v=64280e66&sqp=CJDly6MG&rs=AOn4CLC1KpTiNgutKhKfgVZ2PGvRucHEMw",
-        "https://i9.ytimg.com/vi/Bf3P_07WuOA/mqdefault.jpg?v=64280e66&sqp=CIzjwaMG&rs=AOn4CLD0oW-iZmPVQKc1tRkf01nB-FyVYw",
-        "https://i9.ytimg.com/vi/Bf3P_07WuOA/mqdefault.jpg?v=64280e66&sqp=CIzjwaMG&rs=AOn4CLD0oW-iZmPVQKc1tRkf01nB-FyVYw",
-        "https://i9.ytimg.com/vi/Bf3P_07WuOA/mqdefault.jpg?v=64280e66&sqp=CIzjwaMG&rs=AOn4CLD0oW-iZmPVQKc1tRkf01nB-FyVYw",
-        "https://i9.ytimg.com/vi/Bf3P_07WuOA/mqdefault.jpg?v=64280e66&sqp=CIzjwaMG&rs=AOn4CLD0oW-iZmPVQKc1tRkf01nB-FyVYw",
-        "https://i9.ytimg.com/vi/Bf3P_07WuOA/mqdefault.jpg?v=64280e66&sqp=CIzjwaMG&rs=AOn4CLD0oW-iZmPVQKc1tRkf01nB-FyVYw"   
-    ]
 
     const handleHoverVideo = (index) => {
         const video = document.querySelector('.videoItem' + index)
@@ -36,13 +33,12 @@ function VideosReview() {
         video.style.boxShadow = '3px 3px 2px rgba(106, 105, 105, 0.2)'
         video.style.transform = 'translateY(0px)'
     }
-    const [handle, data] = useContext(Context)
-    const menuItems = data.listGames
 
     const opts = {
         width: '100%',
         height : '200px'
     };
+
 
 
     const options = { month: 'long', day: 'numeric', year: 'numeric' };
@@ -52,20 +48,20 @@ function VideosReview() {
             <div className="menuVideosReview col-lg-12">
                 <div className="menu col-lg-8">
                     {menuItems.map((m,index) => (
-                        <div onClick={() => handleClickMenu(index)} key={index} className={index != 0 ? 'menuItem menuItem'+index : 'menuItem active menuItem'+index}>
+                        <div onClick={() => handleClickMenu(index, m)} key={index} className={index != 0 ? 'menuItem menuItem'+index : 'menuItem active menuItem'+index}>
                             {m}
                         </div>
                     ))}
                 </div>
             </div>
-            <div className='menuVideosMobile'>
-                <div className="dropdown">
+            <div className='menuVideosMobile' style={{zIndex : 12}}>
+                <div className="dropdown" style={{zIndex : 12}}>
                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                         Video Games
                     </button>
                     <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
                         {menuItems.map((m,index) => (
-                            <li key={index}><a className="dropdown-item" href="#">{m}</a></li>
+                            <li className="dropdown-item" key={index} onClick={() => handleClickMenu(index, m)} >{m}</li>
                         ))}
                     </ul>
                 </div>
@@ -74,20 +70,37 @@ function VideosReview() {
             <div className="boxChildren"></div>
             <div className="col-lg-12" style={{display:'flex', justifyContent : 'center'}}>
                 <div className="col-lg-11 listVideoItem">
-                    {data.games.map((game, index) => (
-                        <div key={index} onMouseOut={() => handleOutVideo(index)} onMouseOver={() => handleHoverVideo(index)} className={"col-lg-3 videoItem videoItem" + index}>
-                            <div className="col-lg-12 videoImage item">
-                                <YouTube videoId={game.video} opts={opts}  />
-                            </div>
-                            <div className='col-lg-12 videoDate item'>
-                                <span className='title'>Date Submitted</span>
-                                <span className='date'>{new Date(game.dateVideo).toLocaleDateString('en-US', options)}</span>
-                            </div>
-                            <div id='videoMO' className='col-lg-12 item videoTitle'>
-                                {game.titleVideo}
-                            </div>
-                        </div>
-                    ))}
+                    {data.games.map((game, index) => {
+                        if (typeVideo == 'All Games') {
+                            return <div key={index} onMouseOut={() => handleOutVideo(index)} onMouseOver={() => handleHoverVideo(index)} className={"col-lg-3 videoItem videoItem" + index}>
+                                    <div className="col-lg-12 videoImage item">
+                                        <YouTube videoId={game.video} opts={opts}  />
+                                    </div>
+                                    <div className='col-lg-12 videoDate item'>
+                                        <span className='title'>Date Submitted</span>
+                                        <span className='date'>{new Date(game.dateVideo).toLocaleDateString('en-US', options)}</span>
+                                    </div>
+                                    <div id='videoMO' className='col-lg-12 item videoTitle'>
+                                        {game.titleVideo}
+                                    </div>
+                                </div>
+                        } else {
+                            if (game.series == typeVideo) {
+                                return <div key={index} onMouseOut={() => handleOutVideo(index)} onMouseOver={() => handleHoverVideo(index)} className={"col-lg-3 videoItem videoItem" + index}>
+                                    <div className="col-lg-12 videoImage item">
+                                        <YouTube videoId={game.video} opts={opts}  />
+                                    </div>
+                                    <div className='col-lg-12 videoDate item'>
+                                        <span className='title'>Date Submitted</span>
+                                        <span className='date'>{new Date(game.dateVideo).toLocaleDateString('en-US', options)}</span>
+                                    </div>
+                                    <div id='videoMO' className='col-lg-12 item videoTitle'>
+                                        {game.titleVideo}
+                                    </div>
+                                </div>
+                            }
+                        }
+                    })}
                 </div>
             </div>
         </div> 

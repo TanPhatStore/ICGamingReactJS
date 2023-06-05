@@ -91,12 +91,14 @@ function Slider({games}) {
                 }
         
                 setTimeout(()=> {
-                    bannerRef.style.transition = '0s'
-                    valueSlider = 0
-                    bannerRef.style.transform = `translateX(${-valueSlider}px)`
-                    bannerRef.appendChild(listBanner[0])
-                    isAllowChange1 = true
-                    isAllowChange2 = true
+                    if (listBanner.length > 0) {
+                        bannerRef.style.transition = '0s'
+                        valueSlider = 0
+                        bannerRef.style.transform = `translateX(${-valueSlider}px)`
+                        bannerRef.appendChild(listBanner[0])
+                        isAllowChange1 = true
+                        isAllowChange2 = true
+                    }
                 },time)
             }
         }

@@ -10,6 +10,8 @@ import logoCVB from '../vcb.webp'
 import logoMomo from '../momo.png'
 import logoZalo from '../zalo.webp'
 import YouTube from 'react-youtube';
+import myVideo from './getlink.mp4'
+import thum from './getlink.png'
 
 function GameDetailPage({game}) {
 
@@ -215,7 +217,9 @@ function GameDetailPage({game}) {
                     </div>  
                 </div>
                 <div className='video col-lg-6 col-11'>
-                    <YouTube videoId='obyMkBMnQ70' opts={opts}  />
+                    <video  className="video-component" controls poster={thum}>
+                        <source src={myVideo} type="video/mp4" />
+                    </video>
                 </div>
             </div>
 

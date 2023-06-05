@@ -130,24 +130,24 @@ function GameDetailPage({game}) {
                     </div>
                     <div className='col-lg-12 detailInfo'>
                         <div className='col-lg-12 gender detailItem' >
-                            Thể Loại : {game.gender}
+                            Gender : {game.gender}
                         </div>
                         <div className='col-lg-12 capacity detailItem'>
-                            Dung Lượng : {game.capacity}
+                            Capacity : {game.capacity}
                         </div>
                         <div className='col-lg-12 numberUser detailItem'>
-                            Số Người Chơi : {game.numberUser}
+                           Number of Players : {game.numberUser}
                         </div>
                         <div className='col-lg-12 ram detailItem'>
-                            RAM Tối Thiểu : {game.ram}
+                            Minimum RAM : {game.ram}
                         </div>
                         <div className='col-lg-12 language detailItem'>
-                            Ngôn Ngữ : {game.language}
+                            Language : {game.language}
                         </div>
                     </div>
                     <div className='btns'>
                         <button onClick={() => handleClickDownload()} className='button btnDownload'>Download Free</button>
-                        <button onClick={() => handleClickDonate()} className='button btnDonate'>Donate</button>
+                        <button className='button btnDonate'><a href='#getlink' className='aaa'>How To Get Link</a></button>
                     </div>
                     
                 </div>
@@ -166,24 +166,24 @@ function GameDetailPage({game}) {
                     </div>
                     <div className='col-lg-12 detailInfo'>
                         <div className='col-lg-12 gender detailItem' >
-                            Thể Loại : {game.gender}
+                            Gender : {game.gender}
                         </div>
                         <div className='col-lg-12 capacity detailItem'>
-                            Dung Lượng : {game.capacity}
+                            Capacity : {game.capacity}
                         </div>
                         <div className='col-lg-12 numberUser detailItem'>
-                            Số Người Chơi : {game.numberUser}
+                           Number of Players : {game.numberUser}
                         </div>
                         <div className='col-lg-12 ram detailItem'>
-                            RAM Tối Thiểu : {game.ram}
+                            Minimum RAM : {game.ram}
                         </div>
                         <div className='col-lg-12 language detailItem'>
-                            Ngôn Ngữ : {game.language}
+                            Language : {game.language}
                         </div>
                     </div>
                     <div className='btns'>
                         <button onClick={() => handleClickDownload()} className='button btnDownload'>Download Free</button>
-                        <button onClick={() => handleClickDonate()} className='button btnDonate'>Donate</button>
+                        <button  className='button btnDonate'><a href='#getlink' className='aaa'>How To Get Link</a></button>
                     </div>
                     
                 </div>
@@ -197,20 +197,21 @@ function GameDetailPage({game}) {
                     <YouTube videoId={game.video} opts={opts}  />
                 </div>
                 <div className='col-lg-4 col-11  des'>
-                    <h3>Giới Thiệu</h3>
+                    <h3>Introduce</h3>
                     <div className='description'>
                         {game.description}
                     </div>
                 </div>
             </div>
+            <a name='getlink'></a>
             <div className='boxParent'></div>
             <div className='col-lg-12 col-12 video_get video_des'>
-                <div className='col-lg-4 col-11  des'>
-                    <h3>Cách Lấy Link Download Game</h3>
+                <div className='col-lg-4 col-11  des' >
+                    <h3>How to Get Game Download Link</h3>
                     <div className='description'>
-                        <p>Đây là cách để mà mình tạo ra kinh phí để tiếp tục phát triển kênh</p>
-                        <p>Mình mong các bạn chịu khó dành ra giúp mình khoảng 30 giây thao tác để lấy link download để ủng hộ mình nhé ❤️❤️</p>
-                        <p>Xin Cảm Ơn !!!!</p>
+                        <p>This is how I create funds to continue to grow the channel</p>
+                        <p>I hope you will take the time to help me about 30 seconds to get the download link to support me ❤️❤️</p>
+                        <p>Thank you !!!!</p>
                     </div>  
                 </div>
                 <div className='video col-lg-6 col-11'>

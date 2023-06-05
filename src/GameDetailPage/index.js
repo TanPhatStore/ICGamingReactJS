@@ -215,7 +215,7 @@ function GameDetailPage({game}) {
                     </div>  
                 </div>
                 <div className='video col-lg-6 col-11'>
-                    <YouTube videoId='d5YASqJnjRY' opts={opts}  />
+                    <YouTube videoId='obyMkBMnQ70' opts={opts}  />
                 </div>
             </div>
 

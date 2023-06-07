@@ -99,7 +99,7 @@ function Header({val}) {
                         </ul>
                     </div>
                 </li>
-                <li ref={menuGamesMobileRef} className='menu menu_game'>Games Mobile <i className='bx bxs-chevron-down'></i>
+                <li ref={menuGamesMobileRef} className='menu menu_game'>Mods <i className='bx bxs-chevron-down'></i>
                     <div ref={subMenuGamesMobileRef}  className='submenu sub_menu_game'>
                         <ul style={{width:'100%'}}>
                             {menuGamesMobile.map ((m, index) => (

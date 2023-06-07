@@ -165,7 +165,7 @@ function App() {
               ))}
               <div className='submenuPC submenu'><Link onClick={() => {handle.handleScrollUp() ; handleExitMenu()}} className='link' to="/list-games-page/all-games">All Games</Link></div>
             </div>
-            <div className='menuItemMO' onClick={() => handleClickMobile()}>Games Mobile <i className='bx bxs-chevron-down'></i></div>
+            <div className='menuItemMO' onClick={() => handleClickMobile()}>Mods <i className='bx bxs-chevron-down'></i></div>
             <div className='subMenuItemMobile subMenuItemMO'>
               {data.listGamesMobile.map((menu, index) => (
                 <div key={index} className='submenuMobile submenu'><Link className='link' onClick={() => {handle.handleScrollUp() ; handleExitMenu()}} to={`list-games-page/${menu.toLowerCase().split(' ').join('-')}-games`}>{menu}</Link></div>

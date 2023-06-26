@@ -191,9 +191,9 @@ function GameDetailPage({game}) {
                 </div>
             </div>
             <div className='boxParent'></div>
-            
-
-
+                
+            <GamesRandom />
+            <div className='boxParent'></div>  
             <div className='col-lg-12 col-12 video_des'>
                 <div className='video col-lg-6 col-11'>
                     <YouTube videoId={game.video} opts={opts}  />
@@ -222,14 +222,6 @@ function GameDetailPage({game}) {
                     </video>
                 </div>
             </div>
-
-
-
-
-
-
-            <div className='boxParent'></div>      
-            <GamesRandom />
             <div className='boxParent'></div> 
             <div className='opa'></div>
             <div id='modalDownload' className='modal1'>

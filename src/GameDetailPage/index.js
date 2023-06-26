@@ -133,7 +133,7 @@ function GameDetailPage({game}) {
             <div className='col-lg-12 gameInfo '>
                 <div id='infoPC' className='col-lg-4 info item'>
                     <div className='col-lg-12 title'>
-                        {game.title + '  ('+ game.gameType +')'}
+                        {game.title + '  ('+ game.gameType == 'Game Mobile' ? 'Game Mod' : 'Game Origin' +')'}
                     </div>
                     <div className='col-lg-12 detailInfo'>
                         <div className='col-lg-12 gender detailItem' >

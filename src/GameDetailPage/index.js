@@ -209,7 +209,7 @@ function GameDetailPage({game}) {
             <div className='boxParent'></div>
             <div className='col-lg-12 col-12 video_get video_des'>
                 <div className='col-lg-4 col-11  des' >
-                    <h3>How to Get Game Download Link</h3>
+                    <h3>How to Get Link Download Game</h3>
                     <div className='description'>
                         <p>This is how I create funds to continue to grow the channel</p>
                         <p>I hope you will take the time to help me about 30 seconds to get the download link to support me ❤️❤️</p>

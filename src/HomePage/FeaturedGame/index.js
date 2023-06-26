@@ -50,7 +50,7 @@ function FeaturedGame({games}) {
                 </div>
             </div>
             <div className='col-lg-12 btnFeaturedGame' style={{display:'flex',justifyContent: 'center'}}>
-                <Link onClick={() => handle.handleScrollUp()} to='/list-games-page/all-games'><button>More Games</button></Link>
+                <Link onClick={() => handle.handleScrollUp()} to='/list-games/game-origin/gta-games'><button>More Games</button></Link>
             </div>
         </div>
     );

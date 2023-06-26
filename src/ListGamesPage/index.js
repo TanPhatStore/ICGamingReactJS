@@ -6,9 +6,9 @@ import { useContext } from 'react'
 import { Context } from '../UseContext/Context'
 import { Link } from 'react-router-dom';
 
-function ListGamesPage({typeGame}) {
+function ListGamesPage({type ,series}) {
     const [handle, data] = useContext(Context)
-    const menuItems = [...data.listGames, 'All Games']
+    const menuItems = (type == 'Game PC' ? [...data.listGamesPC] : [...data.listGamesMobile])
 
     const handleClickMenu = (num) => {
         const active = document.querySelector(".active")
@@ -22,8 +22,8 @@ function ListGamesPage({typeGame}) {
             <div className="menuGames col-lg-12">
                 <div className="menu">
                     {menuItems.map((m,index) => (
-                        <Link key={index} className='link' onClick={handle.handleScrollUp} to={m == 'All Games' ? `/list-games-page/all-games` : `/list-games-page/${m.toLowerCase().split(' ').join('-')}-games`}>
-                            <div onClick={() => handleClickMenu(index)} key={index} className={m.toLowerCase().split(' ').join('-') != typeGame ? 'menuItem menuItem'+index : 'menuItem active menuItem'+index}>
+                        <Link key={index} className='link' onClick={handle.handleScrollUp} to={(type == 'Game PC' ? `/list-games/game-origin/${m.toLowerCase().split(' ').join('-')}-games` : `/list-games/game-mod/${m.toLowerCase().split(' ').join('-')}-games`)}>
+                            <div onClick={() => handleClickMenu(index)} key={index} className={m.toLowerCase().split(' ').join('-') != series ? 'menuItem menuItem'+index : 'menuItem active menuItem'+index}>
                                 {m}
                             </div>
                         </Link>
@@ -44,7 +44,7 @@ function ListGamesPage({typeGame}) {
                 </div>
             </div>
             <div className='boxChildren'></div>
-            <ListGames typeGame={typeGame}/>
+            <ListGames type={type} series={series}/>
             <div className='boxParent'></div>
             <div className='boxChildren'></div>
         </div>

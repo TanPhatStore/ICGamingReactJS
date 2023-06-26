@@ -5,18 +5,23 @@ import GameOfList from '../../ElementCustom/GameOfList';
 import { useContext } from 'react';
 import {Context} from '../../UseContext/Context'
 
-function ListGames({typeGame}) {
+function ListGames({type, series}) {
 
     const [handle, data] = useContext(Context)
     const games = []
-    if (typeGame == 'all-games') {
+    if (series == 'all-games') {
         data.games.forEach((game , index) => {
-            games.push(game)
+            if (game.gameType == type) {
+                games.push(game)
+            }
+            
         })
     } else {
         data.games.forEach((game , index) => {
-            if(game.series.toLowerCase().split(' ').join('-') == typeGame) {
-                games.push(game)
+            if(game.series.toLowerCase().split(' ').join('-') == series) {
+                if (game.gameType == type) {
+                    games.push(game)
+                }
             }
         })
     }

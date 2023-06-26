@@ -19,13 +19,13 @@ function Header({val}) {
         setMenuGamesPC(data.listGamesPC)
         setMenuGamesMobile(data.listGamesMobile)
         menuGamesPCRef.current.addEventListener('mouseover', () => {
-            subMenuGamesPCRef.current.style.height = 50 * (menuGamesPC.length + 1) + 'px'
+            subMenuGamesPCRef.current.style.height = 50 * (menuGamesPC.length ) + 'px'
         })
         menuGamesPCRef.current.addEventListener('mouseout', () => {
             subMenuGamesPCRef.current.style.height = 0
         })
         menuGamesMobileRef.current.addEventListener('mouseover', () => {
-            subMenuGamesMobileRef.current.style.height = 50 * (menuGamesMobile.length + 1) + 'px'
+            subMenuGamesMobileRef.current.style.height = 50 * (menuGamesMobile.length ) + 'px'
         })
         menuGamesMobileRef.current.addEventListener('mouseout', () => {
             subMenuGamesMobileRef.current.style.height = 0
@@ -93,9 +93,8 @@ function Header({val}) {
                     <div ref={subMenuGamesPCRef} className='submenu sub_menu_game'>
                         <ul style={{width:'100%'}}>
                             {menuGamesPC.map ((m, index) => (
-                                <li key={index} style={{width:'100%'}}> <Link className='link' onClick={handle.handleScrollUp} to={`list-games-page/${m.toLowerCase().split(' ').join('-')}-games`}><div id='gameImage'><img width={'100%'} src={data.PCLogo[index]} /></div> {m}</Link></li>
+                                <li key={index} style={{width:'100%'}}> <Link className='link' onClick={handle.handleScrollUp} to={`list-games/game-origin/${m.toLowerCase().split(' ').join('-')}-games`}><div id='gameImage'><img width={'100%'} src={data.PCLogo[index]} /></div> {m}</Link></li>
                             ))}
-                            <li style={{width:'100%'}}> <Link onClick={handle.handleScrollUp} className='link' to="/list-games-page/all-games"><div id='gameImage'><img width={'100%'} src='https://pbs.twimg.com/profile_images/558750489152458752/pBBTFL0j_400x400.png' /></div> Xem Thêm.....</Link></li>
                         </ul>
                     </div>
                 </li>
@@ -103,9 +102,8 @@ function Header({val}) {
                     <div ref={subMenuGamesMobileRef}  className='submenu sub_menu_game'>
                         <ul style={{width:'100%'}}>
                             {menuGamesMobile.map ((m, index) => (
-                                <li key={index} style={{width:'100%'}}><Link className='link' onClick={handle.handleScrollUp} to={`list-games-page/${m.toLowerCase().split(' ').join('-')}-games`}><div id='gameImage'><img width={'100%'} src={data.MOLogo[index]} /></div> {m}</Link></li>
+                                <li key={index} style={{width:'100%'}}><Link className='link' onClick={handle.handleScrollUp} to={`list-games/game-mod/${m.toLowerCase().split(' ').join('-')}-games`}><div id='gameImage'><img width={'100%'} src={data.MOLogo[index]} /></div> {m}</Link></li>
                             ))}
-                            <li style={{width:'100%'}}><Link onClick={handle.handleScrollUp} className='link' to="/list-games-page/all-games"><div id='gameImage'><img width={'100%'} src='https://pbs.twimg.com/profile_images/558750489152458752/pBBTFL0j_400x400.png' /></div> Xem Thêm.....</Link></li>
                         </ul>
                     </div>
                 </li>

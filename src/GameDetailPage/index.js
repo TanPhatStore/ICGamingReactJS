@@ -123,7 +123,7 @@ function GameDetailPage({game}) {
     };
 
     const handleUpdateDownloads = (index, game) => {
-        axios.put('http://localhost:3002/game/update-downloads-game', {gameID : game._id})
+        axios.put('https://ic-gaming-node-js.vercel.app//game/update-downloads-game', {gameID : game._id})
     }
 
     return ( 

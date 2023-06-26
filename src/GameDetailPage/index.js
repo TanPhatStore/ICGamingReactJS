@@ -12,6 +12,7 @@ import logoZalo from '../zalo.webp'
 import YouTube from 'react-youtube';
 import myVideo from './getlink.mp4'
 import thum from './getlink.png'
+import axios from 'axios'
 
 function GameDetailPage({game}) {
 
@@ -120,6 +121,10 @@ function GameDetailPage({game}) {
         width: '100%',
         height : '400px'
     };
+
+    const handleUpdateDownloads = (index, game) => {
+        axios.put('http://localhost:3002/game/update-downloads-game', {gameID : game._id})
+    }
 
     return ( 
         <div className='gameDetail'>
@@ -231,7 +236,7 @@ function GameDetailPage({game}) {
                     </div>
                     <div className='col-lg-8 buttons'>
                         {game.linksDownload.map((link, index) => (
-                            <button key={index} className='col-lg-5'><a target="_blank" href={link}>
+                            <button key={index} onClick={() => {handleUpdateDownloads(index, game)}} className='col-lg-5'><a target="_blank" href={link}>
                                 {game.linksDownload.length == 1 ? 'Main' : 'Part' + (index + 1)} <img src={logo_gg_drive} height='70%'/>
                             </a></button>
                         ))}

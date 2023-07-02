@@ -235,11 +235,17 @@ function GameDetailPage({game}) {
                         <img src={game.logo} width='90%'/>
                     </div>
                     <div className='col-lg-8 buttons'>
-                        {game.linksDownload.map((link, index) => (
-                            <button key={index} onClick={() => {handleUpdateDownloads(index, game)}} className='col-lg-5'><a target="_blank" href={link}>
-                                {game.linksDownload.length == 1 ? 'Main' : 'Part' + (index + 1)} <img src={logo_gg_drive} height='70%'/>
+                        {game.linksDownload.map((link, index) => {
+                            if (index == 0) {
+                                return <button key={index} onClick={() => {handleUpdateDownloads(index, game)}} className='col-lg-5'><a target="_blank" href={link}>
+                                {game.linksDownload.length == 1 ? 'Main' : 'Part ' + (index + 1)} <img src={logo_gg_drive} height='70%'/>
                             </a></button>
-                        ))}
+                            } else {
+                                return <button key={index} className='col-lg-5'><a target="_blank" href={link}>
+                                {game.linksDownload.length == 1 ? 'Main' : 'Part ' + (index + 1)} <img src={logo_gg_drive} height='70%'/>
+                            </a></button>
+                            }
+                        })}
                     </div>
                     <button onClick={() => handleClickExit()} className='btnExit'><i className='bx bxs-x-square'></i></button>
                 </div>

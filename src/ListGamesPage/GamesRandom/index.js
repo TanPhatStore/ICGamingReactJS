@@ -30,7 +30,7 @@ function GamesRandom() {
 
     const GamesRandom = games.map(game => {
         return {
-            url : `/games/${game.title.toLowerCase().split(' ').join('-')}`,
+            url : `/games/${game.title.toLowerCase().split(' ').join('-')}/is-second`,
             image : game.logoSite,
             logo : game.logo
         }

@@ -125,6 +125,9 @@ function GameDetailPage({game, isSecond}) {
     const handleUpdateDownloads = (index, game) => {
         axios.put('https://ic-gaming-node-js.vercel.app/game/update-downloads-game', {gameID : game._id})
     }
+    const handleUpdateSecond = (index, game) => {
+        axios.put('https://ic-gaming-node-js.vercel.app/game/update-second-game', {gameID : game._id})
+    }
 
     return ( 
         <div className='gameDetail'>
@@ -249,7 +252,7 @@ function GameDetailPage({game, isSecond}) {
                             }) : 
                             game.linksDownloadSecond.map((link, index) => {
                                 if (index == 0) {
-                                    return <button key={index} onClick={() => {handleUpdateDownloads(index, game)}} className='col-lg-5'><a target="_blank" href={link}>
+                                    return <button key={index} onClick={() => {handleUpdateSecond(index, game)}} className='col-lg-5'><a target="_blank" href={link}>
                                     {game.linksDownload.length == 1 ? 'Main' : 'Part ' + (index + 1)} <img src={logo_gg_drive} height='70%'/>
                                 </a></button>
                                 } else {

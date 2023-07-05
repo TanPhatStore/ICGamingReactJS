@@ -177,7 +177,7 @@ function Slider({games}) {
     }, [])
 
     return (<div style={{display:'flex', justifyContent:'center'}}>
-        <div className="col-lg-12 sliders">
+        <div className="col-lg-12 sliders" style={{display:'flex',justifyContent: 'center'}}>
             <div ref={sliderRef} className="slider slider1 col-lg-5 col-11">
                 <div className='listBanner listBanner1'>
                     {imagesPC.map((image, index) => {

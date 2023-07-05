@@ -177,69 +177,75 @@ function Slider({games}) {
     }, [])
 
     return (<div style={{display:'flex', justifyContent:'center'}}>
-        <div className="col-lg-12 sliders" style={{display:'flex',justifyContent: 'center'}}>
-            <div ref={sliderRef} className="slider slider1 col-lg-5 col-11">
-                <div className='listBanner listBanner1'>
-                    {imagesPC.map((image, index) => {
-                        if (index < 6) {
-                            return <div onMouseOver={() => handleMouseOver(1)} onMouseOut={() => handleMouseOut(1)} key={index} className='banner banner1 col-lg-12 col-12'>
-                                <img className='bannerImage1 bannerImage' src={image.image} width='100%'  />
-                                <div className='logoGame1 logoGame'>
-                                    <div className='image'> 
-                                        <img src={image.logo} height={'100%'}/>
-                                        <button type="button" className="btn btn-danger"><Link className='link' style={{color:'white'}} onClick={() => handle.handleScrollUp()} to={image.url}>Download Game</Link></button>
+        <div className="col-lg-12 sliders">
+            {imagesPC.length != 0 ?
+                <div ref={sliderRef} className="slider slider1 col-lg-5 col-11">
+                    <div className='listBanner listBanner1'>
+                        {imagesPC.map((image, index) => {
+                            if (index < 6) {
+                                return <div onMouseOver={() => handleMouseOver(1)} onMouseOut={() => handleMouseOut(1)} key={index} className='banner banner1 col-lg-12 col-12'>
+                                    <img className='bannerImage1 bannerImage' src={image.image} width='100%'  />
+                                    <div className='logoGame1 logoGame'>
+                                        <div className='image'> 
+                                            <img src={image.logo} height={'100%'}/>
+                                            <button type="button" className="btn btn-danger"><Link className='link' style={{color:'white'}} onClick={() => handle.handleScrollUp()} to={image.url}>Download Game</Link></button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        }
-                    })}
-                </div>
-                <div className='cateSliderParent'>
-                    {imagesPC.map ((m,index) => {
-                        if (index < 6) {
-                            return <div key={index} onClick={() => {
-                                if (isAllowChange1 == true) {
-                                    isAllowChange1 = false
-                                    cateSlider1 = index; 
-                                    handleClickCateSlider1()
-                                }
-                                }} className={index == 0 ? 'cateItem cateItem1 active1' : 'cateItem cateItem1'} > 
-                            </div>
-                        }
-                    })}
-                </div>
-            </div> 
-            <div className="slider slider2 col-lg-5 col-0">
-                <div className='listBanner listBanner2'>
-                    {imagesMobile.map((image, index) => {
-                        if (index < 6) {
-                            return <div onMouseOver={() => handleMouseOver(2)} onMouseOut={() => handleMouseOut(2)} key={index} className='banner banner2 col-lg-12'>
-                                <img className='bannerImage2'   src={image.image} width='100%' height='100%' />
-                                <div className='logoGame2 logoGame'>
-                                    <div  className='image'> 
-                                        <img src={image.logo} height={'100%'}/>
-                                        <button type="button" className="btn btn-danger"><Link className='link' style={{color:'white'}} onClick={() => handle.handleScrollUp()} to={image.url}>Download Game</Link></button>
+                            }
+                        })}
+                    </div>
+                    <div className='cateSliderParent'>
+                        {imagesPC.map ((m,index) => {
+                            if (index < 6) {
+                                return <div key={index} onClick={() => {
+                                    if (isAllowChange1 == true) {
+                                        isAllowChange1 = false
+                                        cateSlider1 = index; 
+                                        handleClickCateSlider1()
+                                    }
+                                    }} className={index == 0 ? 'cateItem cateItem1 active1' : 'cateItem cateItem1'} > 
+                                </div>
+                            }
+                        })}
+                    </div>
+                </div> :
+                <></>
+            }
+            {imagesMobile.length != 0 ? 
+                <div className="slider slider2 col-lg-5 col-0">
+                    <div className='listBanner listBanner2'>
+                        {imagesMobile.map((image, index) => {
+                            if (index < 6) {
+                                return <div onMouseOver={() => handleMouseOver(2)} onMouseOut={() => handleMouseOut(2)} key={index} className='banner banner2 col-lg-12'>
+                                    <img className='bannerImage2'   src={image.image} width='100%' height='100%' />
+                                    <div className='logoGame2 logoGame'>
+                                        <div  className='image'> 
+                                            <img src={image.logo} height={'100%'}/>
+                                            <button type="button" className="btn btn-danger"><Link className='link' style={{color:'white'}} onClick={() => handle.handleScrollUp()} to={image.url}>Download Game</Link></button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        }
-                    })}
-                </div>
-                <div className='cateSliderParent'>
-                    {imagesMobile.map ((m,index) => {
-                        if (index < 6) {
-                            return <div key={index} onClick={() => {
-                                if (isAllowChange2 == true) {
-                                    isAllowChange2 = false
-                                    cateSlider2 = index; 
-                                    handleClickCateSlider2()
-                                }
-                            }} className={index == 0 ? 'cateItem cateItem2 active2' : 'cateItem cateItem2'}> 
-                            </div>
-                        }
-                    })}
-                </div>
-            </div> 
+                            }
+                        })}
+                    </div>
+                    <div className='cateSliderParent'>
+                        {imagesMobile.map ((m,index) => {
+                            if (index < 6) {
+                                return <div key={index} onClick={() => {
+                                    if (isAllowChange2 == true) {
+                                        isAllowChange2 = false
+                                        cateSlider2 = index; 
+                                        handleClickCateSlider2()
+                                    }
+                                }} className={index == 0 ? 'cateItem cateItem2 active2' : 'cateItem cateItem2'}> 
+                                </div>
+                            }
+                        })}
+                    </div>
+                </div>  :
+                <></>
+            }
         </div>   
     </div>);
 }

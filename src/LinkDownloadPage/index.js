@@ -12,13 +12,13 @@ function LinkDownloadPage({links}) {
             </div>
             <div className='col-lg-12 title'>
                 <p>{links.title.split('"')[0]}</p>
-                <p>Unzip Password : {links.password}</p>
+                {links.password ? <p>Unzip Password : {links.password}</p> : ''}
             </div>
             <div className='links col-12'>
                 {links.links.map((link, index) => {
                     return <a key={index} href='' className='link-item'>
                         <div>
-                            {links.title.split('(')[0]} - Part {parts[index]}
+                            {links.title.split('(')[0].split('"')[0]} - Part {parts[index]}
                         </div>
                     </a>
                 })}

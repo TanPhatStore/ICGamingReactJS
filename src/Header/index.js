@@ -111,6 +111,7 @@ function Header({val}) {
             </ul>
 
             <div id='search' className='col-lg-3' >
+                <i className="fa-solid icon-search fa-magnifying-glass fa-rotate-90"></i>
                 <input 
                     id='txtsearch' 
                     type='text' 

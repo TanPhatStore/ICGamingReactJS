@@ -30,7 +30,9 @@ function Footer() {
                         </div>
                         <div  className="col-lg-4 col-4 contact" >
                             <div className="col-lg-12 icon">
-                                <i className='bx bxl-youtube'></i> <i className='bx bxl-instagram-alt' ></i> <i className='bx bxl-facebook-circle' ></i>
+                                <a href='https://www.youtube.com/channel/UCnFDlD3aQHKitXoeayAQ5pA'style={{color : 'black'}}><i className='bx bxl-youtube'></i></a> 
+                                <i className='bx bxl-instagram-alt' ></i> 
+                                <i className='bx bxl-facebook-circle' ></i>
                             </div>
                             <div className="col-lg-12 copyRight">
                                 © 2023 IC Gaming Inc.

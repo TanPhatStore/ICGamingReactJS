@@ -13,12 +13,20 @@ import './App.scss';
 import logo from '../src/icgaming.png'
 import { Link } from 'react-router-dom';
 import Loading from './ElementCustom/Loading'
+import LinkManagerManagerPage from './LinkDownloadPage/LinkManagerPage'
+import axios from 'axios';
+import LinkDownloadPage from './LinkDownloadPage';
 
 function App() {
 
   const [handle, data] = useContext(Context)
-
   const [isPC , setIsPC ] = useState(false)
+  const [links, setLinks] = useState([])
+  useEffect(() => {
+      axios.get('https://ic-gaming-node-js.vercel.app/links/api')
+          .then(res => setLinks(res.data))
+  }, [])
+
   const handleClickPC = () => {
     const subArea = document.querySelector('.subMenuItemPC')
     const num = document.getElementsByClassName('submenuPC').length
@@ -102,7 +110,6 @@ function App() {
     <div className="App">
       <Header val = {{ opa : document.querySelector('#effectOpacity'), menu : document.querySelector('#menuMobile'), search : document.querySelector('#searchMobile')}} />
       <div className='boxParent'></div>
-
       {haveData == true ? 
         <Routes>
           <Route path='/' element={<HomePage />} />
@@ -110,7 +117,6 @@ function App() {
               return <Route key={index} path={`/list-games/game-origin/${item.toLowerCase().split(' ').join('-')}-games`} element={<ListGamesPage type='Game PC' series={`${item.toLowerCase().split(' ').join('-')}`} />} /> 
           })}
           {data.listGamesMobile.map((item, index) => {
-              console.log(item)
               return <Route key={index} path={`/list-games/game-mod/${item.toLowerCase().split(' ').join('-')}-games`} element={<ListGamesPage type='Game Mobile' series={`${item.toLowerCase().split(' ').join('-')}`} />} /> 
           })}
           {data.games.map((game, index) => ( 
@@ -119,6 +125,10 @@ function App() {
           {data.games.map((game, index) => ( 
               <Route key={index} path={`/games/${game.title.toLowerCase().split(' ').join('-')}/is-second`} element={<GameDetailPage game={game} isSecond={true} />}  /> 
           ))}
+          <Route path='/link-manager' element={<LinkManagerManagerPage />} />
+          {links.map((link, index) => {
+            return <Route key={index} path={`${link.URL.split('app')[1]}`} element={<LinkDownloadPage links={link} />} />
+          })}
         </Routes> : <Loading  />
       }
 

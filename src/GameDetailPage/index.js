@@ -131,8 +131,9 @@ function GameDetailPage({game, isSecond}) {
 
     return ( 
         <div className='gameDetail'>
-            <div className='boxParent box1'></div>
-            <div className='boxChildren box2'></div>
+            <div className='boxChildren'></div>  
+            <GamesRandom />
+            <div className='boxChildren'></div>  
             <div className='col-lg-12 gameInfo '>
                 <div id='infoPC' className='col-lg-4 info item'>
                     <div className='col-lg-12 title'>
@@ -199,9 +200,6 @@ function GameDetailPage({game, isSecond}) {
                 </div>
             </div>
             <div className='boxParent'></div>
-                
-            <GamesRandom />
-            <div className='boxParent'></div>  
             <div className='col-lg-12 col-12 video_des'>
                 <div className='video col-lg-6 col-11'>
                     <YouTube videoId={game.video} opts={opts}  />

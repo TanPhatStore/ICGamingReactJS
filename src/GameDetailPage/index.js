@@ -9,6 +9,7 @@ import logo from '../icgaming.png'
 import logoCVB from '../vcb.webp'
 import logoMomo from '../momo.png'
 import logoZalo from '../zalo.webp'
+import logoPaypal from '../paypal.png'
 import YouTube from 'react-youtube';
 import myVideo from './getlink.mp4'
 import thum from './getlink.png'
@@ -158,6 +159,7 @@ function GameDetailPage({game, isSecond}) {
                     </div>
                     <div className='btns'>
                         <button onClick={() => handleClickDownload()} className='button btnDownload'>Download Free</button>
+                        <button className='button btnDonate' onClick={() => handleClickDonate()}>Donate</button>
                         <button className='button btnDonate'><a href='#getlink' className='aaa'>How To Get Link</a></button>
                     </div>
                     
@@ -194,6 +196,7 @@ function GameDetailPage({game, isSecond}) {
                     </div>
                     <div className='btns'>
                         <button onClick={() => handleClickDownload()} className='button btnDownload'>Download Free</button>
+                        <button className='button btnDonate' onClick={() => handleClickDonate()}>Donate</button>
                         <button  className='button btnDonate'><a href='#getlink' className='aaa'>How To Get Link</a></button>
                     </div>
                     
@@ -266,13 +269,13 @@ function GameDetailPage({game, isSecond}) {
             </div>
             <div id='modalDonate' className='modal1'>
                 <div className='col-lg-12 row' style={{display:'flex', justifyContent: 'center'}}>
-                    <div className='col-lg-5 logo'>
+                    <div className='col-lg-3 logo'>
                         <img src={logo} width='90%'/>
                     </div>
-                    <div className='col-lg-6 donates'>
-                        <p className='col-lg-11 donate'><img src={logoCVB} height='70%'/>  0281000625860</p> 
-                        <p className='col-lg-11 donate'><img src={logoMomo} height='70%'/>  0902491471</p> 
-                        <p className='col-lg-11 donate'><img src={logoZalo} height='70%'/>  0902491471</p> 
+                    <div className='col-lg-9 donates'>
+                        <p className='col-lg-11 donate'><img src={logoPaypal} height='70%'/>  icgaming26zs@gmail.com</p> 
+                        {/* <p className='col-lg-11 donate'><img src={logoMomo} height='70%'/>  0902491471</p> 
+                        <p className='col-lg-11 donate'><img src={logoZalo} height='70%'/>  0902491471</p>  */}
                         
 
                     </div>

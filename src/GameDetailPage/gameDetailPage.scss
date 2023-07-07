@@ -78,18 +78,21 @@
                 margin-top: 20px;
                 display: flex;
                 justify-content: space-around;
+
                 & .button {
-                    font-size: 1.25rem;
+                    font-size: 1.16rem;
                     font-family: 'Poppins';
                     font-weight: bold;
                     height: 50px;
                     width: 47%;
                     background: 0;
                     transition: 0.5s;
+                    margin: 0 5px;
                 }
 
                 & .button:hover {
-                    font-size: 1.30rem;
+                    font-size: 1.18rem;
+                    color: black;
                 }
             }
         }

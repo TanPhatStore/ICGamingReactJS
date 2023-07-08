@@ -30,9 +30,9 @@ function Footer() {
                         </div>
                         <div  className="col-lg-4 col-4 contact" >
                             <div className="col-lg-12 icon">
-                                <a href='https://www.youtube.com/channel/UCnFDlD3aQHKitXoeayAQ5pA'style={{color : 'black'}}><i className='bx bxl-youtube'></i></a> 
-                                <i className='bx bxl-instagram-alt' ></i> 
-                                <i className='bx bxl-facebook-circle' ></i>
+                                <a target='_blank' href='https://www.youtube.com/channel/UCnFDlD3aQHKitXoeayAQ5pA'style={{color : 'black'}}><i style={{fontSize : '30px', margin : '0 5px'}} className="fa-brands fa-i fa-youtube"></i></a> 
+                                <a target='_blank' href='https://www.instagram.com/icgaming26/'style={{color : 'black'}}><i style={{fontSize : '30px', margin : '0 5px'}} className="fa-brands fa-i fa-instagram"></i></a>
+                                <a target='_blank' href='https://www.tiktok.com/@ic_gaming26'style={{color : 'black'}}><i style={{fontSize : '30px', margin : '0 5px'}} className="fa-brands fa-i fa-tiktok"></i></a>
                             </div>
                             <div className="col-lg-12 copyRight">
                                 © 2023 IC Gaming Inc.

@@ -6,10 +6,15 @@ import {useEffect, useRef, useState} from 'react'
 import { useContext } from 'react';
 import { Context } from '../../UseContext/Context';
 
-function GamesRandom() {
+function GamesRandom({type}) {
 
     const shuffleArray = (array) => {
-        const shuffledArray = [...array];
+        const shuffledArray = [];
+        array.forEach((game) => {
+            if (game.gameType == type) {
+                shuffledArray.push(game)
+            }
+        })
         let currentIndex = shuffledArray.length;
       
         while (currentIndex > 0) {
@@ -30,6 +35,7 @@ function GamesRandom() {
 
     const GamesRandom = games.map(game => {
         return {
+            gameType : game.gameType,
             url : `/games/${game.title.toLowerCase().split(' ').join('-')}/is-second`,
             image : game.logoSite,
             logo : game.logo

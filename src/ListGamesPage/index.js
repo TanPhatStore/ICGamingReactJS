@@ -13,12 +13,13 @@ function ListGamesPage({type ,series}) {
     const handleClickMenu = (num) => {
         const active = document.querySelector(".active")
         const currentMenuItem = document.querySelector('.menuItem' + num)
-        active.classList.remove('active')
+        active.classList.remove('active') 
         currentMenuItem.classList.add('active')
     }
     return ( 
         <div id='listGames'>
-            <GamesRandom/>
+            <GamesRandom type={'Game PC'}/>
+
             <div className="menuGames col-lg-12">
                 <div className="menu">
                     {menuItems.map((m,index) => (

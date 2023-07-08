@@ -7,9 +7,13 @@ import { Context } from '../../UseContext/Context';
 
 function FeaturedGame({games}) {
 
-    
     const shuffleArray = (array) => {
-        const shuffledArray = [...array];
+        const shuffledArray = [];
+        array.forEach((game) => {
+            if (game.gameType == 'Game PC') {
+                shuffledArray.push(game)
+            }
+        })
         let currentIndex = shuffledArray.length;
       
         while (currentIndex > 0) {

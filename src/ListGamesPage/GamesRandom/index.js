@@ -59,7 +59,7 @@ function GamesRandom({type}) {
                 listGamesRandomRef.appendChild(listGames[0])
             }, 500)
             listGamesRandomRef.style.transition = '0.5s'
-        },3000)
+        },1500)
         
 
         return () => {

@@ -15,7 +15,7 @@ function Game({featuredGame, index}) {
         logo.style.top = '18%'
         site.style.opacity = '1'
         smoothOut.style.opacity = '0'
-        smoothOver.style.opacity = '1'
+        smoothOver.style.opacity = '0.7'
     }
 
     const handleMouseOut = (number) => {

@@ -25,7 +25,7 @@
         height: 100%;
         width: 100%;
         transition: 0.3s;
-        background-image: linear-gradient(to right, rgba(252, 0, 255, 0.9), rgba(0, 219, 222, 0.9));
+        background-image: linear-gradient(to right, rgba(86, 204, 242, 0.9), rgba(47, 128, 237, 0.9));
         opacity : 0;
         transform: translateY(90);
     }
@@ -36,6 +36,8 @@
         left: 50%;
         transform: translateX(-50%);
         transition: 0.3s;
+        border-radius: 15px;
+        overflow: hidden;
     }
 
     & .site {

@@ -202,6 +202,7 @@ function GameDetailPage({game, isSecond}) {
                     
                 </div>
             </div>
+            {/* <GamesRandom type={'Game PC'} /> */}
             <div className='boxParent'></div>
             <div className='col-lg-12 col-12 video_des'>
                 <div className='video col-lg-6 col-11'>

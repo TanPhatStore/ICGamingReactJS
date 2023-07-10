@@ -5,7 +5,7 @@ import HomePage from './HomePage';
 import Footer from './Footer'
 import GameDetailPage from './GameDetailPage';
 import ListGamesPage from './ListGamesPage'
-import {Routes , Route} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation} from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from './UseContext/Context';
 import { useState, useEffect } from 'react';
@@ -106,7 +106,7 @@ function App() {
       setListGames(list)
   }
 
-  return (
+  return (             
     <div className="App">
       <Header val = {{ opa : document.querySelector('#effectOpacity'), menu : document.querySelector('#menuMobile'), search : document.querySelector('#searchMobile')}} />
       <div className='boxParent'></div>
@@ -129,7 +129,7 @@ function App() {
           {links.map((link, index) => {
             return <Route key={index} path={`${link.URL.split('app')[1]}`} element={<LinkDownloadPage links={link} />} />
           })}
-        </Routes> : <Loading  />
+        </Routes>  : <Loading  />
       }
 
       <Footer />

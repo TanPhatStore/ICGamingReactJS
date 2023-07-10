@@ -105,7 +105,7 @@ function GamesRandom({type}) {
                         listGamesRandomRef.appendChild(listGames[0])
                     }, 500)
                     listGamesRandomRef.style.transition = '0.5s'
-                },3000)
+                },1500)
                 setTimeout(() => {status = true},500)
             } else if (btnType == 'btnLeft') {
                 clearInterval(sliderGames.current)
@@ -134,7 +134,7 @@ function GamesRandom({type}) {
                         listGamesRandomRef.appendChild(listGames[0])
                     }, 500)
                     listGamesRandomRef.style.transition = '0.5s'
-                },3000)
+                },1500)
                 setTimeout(() => {status = true},500)
             }
         }
